@@ -11,6 +11,7 @@ public class Distancia {
     private String nombreAeropuertoOrigen;
     private String nombreAeropuertoDestino;
     private int cantidadMillas;
+    private String identificador;
 
     /**
      * Constructor de la clase distancia.
@@ -22,6 +23,7 @@ public class Distancia {
         this.nombreAeropuertoOrigen = nombreAeropuertoOrigen;
         this.nombreAeropuertoDestino = nombreAeropuertoDestino;
         this.cantidadMillas = cantidadMillas;
+        this.identificador = nombreAeropuertoOrigen + "-" + nombreAeropuertoDestino;
     }
 
     /**
@@ -70,5 +72,13 @@ public class Distancia {
      */
     public void setCantidadMillas(int cantidadMillas) {
         this.cantidadMillas = cantidadMillas;
+    }
+
+    public String getIdentificador() {
+        return identificador;
+    }
+
+    public void setIdentificador(String identificador) {
+        this.identificador = identificador;
     }
 }

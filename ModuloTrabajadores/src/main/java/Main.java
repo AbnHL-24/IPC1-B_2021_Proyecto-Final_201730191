@@ -1,3 +1,5 @@
+import controlador.archivos.CargarDatosDesdeArchivo;
+
 /**
  * Clase principal desde donde se inicia la aplicacion.
  * @author abnerhl
@@ -10,5 +12,6 @@ public class Main {
      */
     public static void main(String[] args) {
         System.out.println("Hola mundo");
+        CargarDatosDesdeArchivo.obtenerDatos();
     }
 }

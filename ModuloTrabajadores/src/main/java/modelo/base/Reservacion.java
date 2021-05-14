@@ -1,7 +1,7 @@
 package modelo.base;
 
 /**
- * Registra un pasajero en un vuelo, el pasajero ya tiene un boleto comprado.
+ * Registra un pasajero en un Vuelo, el pasajero ya tiene un boleto comprado.
  * @see Vuelo
  * @see Pasaporte
  * @see Tarjeta
@@ -16,7 +16,7 @@ public class Reservacion {
     /**
      * Construye una reservacion con los siguientes parametros.
      * @param NO_Pasaporte Es el numero del pasaporte del pasajero.
-     * @param codigoVuelo Es el codigo del vuelo al que se hará la reservacion.
+     * @param codigoVuelo Es el codigo del Vuelo al que se hará la reservacion.
      * @param NO_Tarjeta Es el numero de la tarjeta del pasajero.
      * @param NO_Asiento Es el numero de asiento que ocupara el pasajero.
      */
