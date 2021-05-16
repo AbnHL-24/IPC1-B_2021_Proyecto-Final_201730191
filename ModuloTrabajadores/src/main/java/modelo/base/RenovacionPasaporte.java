@@ -1,5 +1,7 @@
 package modelo.base;
 
+import java.time.LocalDate;
+
 /**
  * Asigna una nueva fecha de vencimineto para el pasaporte inddicado.
  * @see Pasaporte
@@ -7,14 +9,14 @@ package modelo.base;
  */
 public class RenovacionPasaporte {
     long NO_Pasaporte;
-    String fechaNuevoVencimiento; //cambiar para clase LocalDate
+    LocalDate fechaNuevoVencimiento;
 
     /**
      * Constructor que pide un numero de pasarpote y la fecha nueva.
      * @param NO_Pasaporte Numero unico del pasaporte.
      * @param fechaNuevoVencimiento Fecha nueva para el documento.
      */
-    public RenovacionPasaporte(long NO_Pasaporte, String fechaNuevoVencimiento) {
+    public RenovacionPasaporte(long NO_Pasaporte, LocalDate fechaNuevoVencimiento) {
         this.NO_Pasaporte = NO_Pasaporte;
         this.fechaNuevoVencimiento = fechaNuevoVencimiento;
     }
@@ -27,11 +29,11 @@ public class RenovacionPasaporte {
         this.NO_Pasaporte = NO_Pasaporte;
     }
 
-    public String getFechaNuevoVencimiento() {
+    public LocalDate getFechaNuevoVencimiento() {
         return fechaNuevoVencimiento;
     }
 
-    public void setFechaNuevoVencimiento(String fechaNuevoVencimiento) {
+    public void setFechaNuevoVencimiento(LocalDate fechaNuevoVencimiento) {
         this.fechaNuevoVencimiento = fechaNuevoVencimiento;
     }
 }

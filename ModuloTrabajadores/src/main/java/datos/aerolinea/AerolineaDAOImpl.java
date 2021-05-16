@@ -13,7 +13,7 @@ import static controlador.archivos.ManejarArchivo.*;
  * @see AerolineaDAO
  * @author abnerhl
  */
-public class AerolineaDOAImpl implements AerolineaDAO{
+public class AerolineaDAOImpl implements AerolineaDAO{
     private final String HOME_USUARIO = System.getProperty("user.home");
     private final String PATH_AEROLINEAS = HOME_USUARIO + "/datos/aerolineas/";
     private final String EXTENSION_AEROLINEA = ".ael";
@@ -22,7 +22,7 @@ public class AerolineaDOAImpl implements AerolineaDAO{
     @Override
     public void crear(Aerolinea aerolinea) {
         crearDirectorio(PATH_AEROLINEAS);
-        manejarArchivoBinario.crearArchivoBinario(PATH_AEROLINEAS + aerolinea.getNombreAerolinea() + EXTENSION_AEROLINEA, aerolinea);
+        manejarArchivoBinario.crearArchivoBinario(PATH_AEROLINEAS + aerolinea.getIdentificadorAerolinea() + EXTENSION_AEROLINEA, aerolinea);
     }
 
     @Override

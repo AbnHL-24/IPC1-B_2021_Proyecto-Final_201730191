@@ -11,7 +11,8 @@ public class Main {
      * @param args arreglo de argumentos de la consola.
      */
     public static void main(String[] args) {
+        String path = "src/main/resources/cargaObjetos.txt";
         System.out.println("Hola mundo");
-        CargarDatosDesdeArchivo.obtenerDatos();
+        CargarDatosDesdeArchivo.obtenerDatos(path);
     }
 }

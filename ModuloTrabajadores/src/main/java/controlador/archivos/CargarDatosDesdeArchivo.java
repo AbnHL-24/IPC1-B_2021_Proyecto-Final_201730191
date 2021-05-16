@@ -1,150 +1,51 @@
 package controlador.archivos;
 
-import controlador.base.aeropuerto.ValidarDatosAeropuerto;
-import modelo.base.Aeropuerto;
-
 import java.util.ArrayList;
+
+import static controlador.archivos.GenerarObjetos.*;
 
 /**
  * Clase que se encarga de leer el archivo de datos del sistema anterior.
  * @author abnerhl
  */
 public class CargarDatosDesdeArchivo {
-    static String path = "src/main/resources/cargaObjetos.txt";
+    //static String path = "src/main/resources/cargaObjetos.txt";
 
-    public static void obtenerDatos() {
+    public static void obtenerDatos(String path) {
         ArrayList<String> datos = ManejarArchivo.leerArchivo(path);
         generarObjetos(datos);
     }
 
     private static void generarObjetos(ArrayList<String> datos) {
-        for(String dato: datos) {
-            String[] parametros = obtenerParametros(dato);
-            if (dato.startsWith("AEROPUERTO")) {
-                generarAeropuerto(parametros);
-            } else if (dato.startsWith("AEROLINEA")) {
-                generarAerolinea(parametros);
-            } else if (dato.startsWith("AVION")) {
-                generarAvion(parametros);
-            } else if (dato.startsWith("DISTANCIA")) {
-                generarDistancia(parametros);
-            } else if (dato.startsWith("VUELO")) {
-                generarVuelo(parametros);
-            } else if (dato.startsWith("PASAPORTE")) {
-                generarPasaporte(parametros);
-            } else if (dato.startsWith("TARJETA")) {
-                generarTarjeta(parametros);
-            } else if (dato.startsWith("RENOVACION_PASAPORTE")) {
-                generarRenovacionPAsaporte(parametros);
-            } else if (dato.startsWith("RESERVACION")) {
-                generarReservacion(parametros);
+        for (int i = 0; i < datos.size(); i++) {
+            int indice = i + 1;
+            String[] parametros = obtenerParametros(datos.get(i));
+
+            if (datos.get(i).startsWith("AEROPUERTO")) {
+                generarAeropuerto(parametros, indice);
+            } else if (datos.get(i).startsWith("AEROLINEA")) {
+                generarAerolinea(parametros, indice);
+            } else if (datos.get(i).startsWith("AVION")) {
+                generarAvion(parametros, indice);
+            } else if (datos.get(i).startsWith("DISTANCIA")) {
+                generarDistancia(parametros, indice);
+            } else if (datos.get(i).startsWith("VUELO")) {
+                generarVuelo(parametros, indice);
+            } else if (datos.get(i).startsWith("PASAPORTE")) {
+                generarPasaporte(parametros, indice);
+            } else if (datos.get(i).startsWith("TARJETA")) {
+                generarTarjeta(parametros, indice);
+            } else if (datos.get(i).startsWith("RENOVACION_PASAPORTE")) {
+                generarRenovacionPasaporte(parametros, indice);
+            } else if (datos.get(i).startsWith("RESERVACION")) {
+                generarReservacion(parametros, indice);
             } else {
-                System.out.println("Error, la linea no continene nunguna coincidencia.");
+                errorCoincidenciaNula(indice);
             }
         }
     }
 
-    private static void generarReservacion(String[] parametros) {
-        //crear validaciones y objeto
 
-        //prueba
-        for (int i = 0; i < parametros.length; i++) {
-            System.out.println(parametros[i]);
-        }
-        System.out.println();
-        // fin de prueba
-    }
-
-    private static void generarRenovacionPAsaporte(String[] parametros) {
-        //crear validaciones y objeto
-
-        //prueba
-        for (int i = 0; i < parametros.length; i++) {
-            System.out.println(parametros[i]);
-        }
-        System.out.println();
-        // fin de prueba
-    }
-
-    private static void generarTarjeta(String[] parametros) {
-        //crear validaciones y objeto
-
-        //prueba
-        for (int i = 0; i < parametros.length; i++) {
-            System.out.println(parametros[i]);
-        }
-        System.out.println();
-        // fin de prueba
-    }
-
-    private static void generarPasaporte(String[] parametros) {
-        //crear validaciones y objeto
-
-        //prueba
-        for (int i = 0; i < parametros.length; i++) {
-            System.out.println(parametros[i]);
-        }
-        System.out.println();
-        // fin de prueba
-    }
-
-    private static void generarVuelo(String[] parametros) {
-        //crear validaciones y objeto
-
-        //prueba
-        for (int i = 0; i < parametros.length; i++) {
-            System.out.println(parametros[i]);
-        }
-        System.out.println();
-        // fin de prueba
-    }
-
-    private static void generarDistancia(String[] parametros) {
-        //Crear objeto
-
-        //prueba
-        for (int i = 0; i < parametros.length; i++) {
-            System.out.println(parametros[i]);
-        }
-        System.out.println();
-        // fin de prueba
-    }
-
-    private static void generarAvion(String[] parametros) {
-        //Crear objeto mandando los parametros.
-
-        //prueba
-        for (int i = 0; i < parametros.length; i++) {
-            System.out.println(parametros[i]);
-        }
-        System.out.println();
-        // fin de prueba
-    }
-
-    private static void generarAerolinea(String[] parametros) {
-        if (ValidarDatosAeropuerto.validar(parametros)) {
-            //CrearAeroppuerto
-        } else {
-            System.out.println("Los datos estan erroneos.");
-        }
-
-        //prueba
-        for (int i = 0; i < parametros.length; i++) {
-            System.out.println(parametros[i]);
-        }
-        System.out.println();
-        // fin de prueba
-    }
-
-    private static void generarAeropuerto(String[] parametros) {
-
-        if (parametros.length == 3) {
-            Aeropuerto aeropuerto = new Aeropuerto(parametros[0], parametros[1], parametros[2]);
-        } else {
-            System.out.println("Error en la cantidad de parametros");
-        }
-        System.out.println();
-    }
 
     /**
      * Este metodo obtiene la cadena 'dato' para separarla en los parametros del objeto a crear.

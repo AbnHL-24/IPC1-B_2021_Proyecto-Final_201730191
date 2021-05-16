@@ -9,7 +9,7 @@ public class Tarjeta {
     private long no_Tarjeta;
     private long no_Pasaporte;
     private int dineroActual;
-    int codigoCV;
+    private int codigoCV;
 
     /**
      * Permite crear una tarjeta.

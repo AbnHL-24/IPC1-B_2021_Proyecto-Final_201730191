@@ -5,6 +5,8 @@ package modelo.base;
  */
 import modelo.base.soporte.*;
 
+import java.time.LocalDate;
+
 /**
  * Crea un pasaporte para un cliente.
  * Contiene un numero unci, una contraseña, fechas de nacimiento, emmision y caducidad del documento, y demas datos personales del cliente.
@@ -13,16 +15,16 @@ import modelo.base.soporte.*;
 public class Pasaporte {
     private long noPasaporte;
     private String contrasenya;
-    private String fechaDeNacimiento; //Cambiar cuando se aprenda LocalDate
+    private LocalDate fechaDeNacimiento;
     private String nacionalidad;
     private EstadoCivil estadoCivil;
     private String nombre;
     private String apellidos;
     private Sexo sexo;
-    private String fechaDeVencimiento; // Cambiar cunado sepa usar LocalDate
-    private String fechaEmision; // Cambiar
+    private LocalDate fechaDeVencimiento;
+    private LocalDate fechaEmision;
     private String paisActual;
-    private int micllasRecorridoas;
+    private int millasRecorridas;
 
     /**
      * Constructor para un pasaporte con los datos para la carga de archivos.
@@ -37,9 +39,9 @@ public class Pasaporte {
      * @param fechaDeVencimiento Fecha de vencimiento del documento.
      * @param fechaEmision Fecha en la que se emitio el documento.
      * @param paisActual Pais en el que se encuentra actualmente ell pasajero.
-     * @param micllasRecorridoas Millas que ha recorrido el pasajero.
+     * @param millasRecorridas Millas que ha recorrido el pasajero.
      */
-    public Pasaporte(long noPasaporte, String contrasenya, String fechaDeNacimiento, String nacionalidad, EstadoCivil estadoCivil, String nombre, String apellidos, Sexo sexo, String fechaDeVencimiento, String fechaEmision, String paisActual, int micllasRecorridoas) {
+    public Pasaporte(long noPasaporte, String contrasenya, LocalDate fechaDeNacimiento, String nacionalidad, EstadoCivil estadoCivil, String nombre, String apellidos, Sexo sexo, LocalDate fechaDeVencimiento, LocalDate fechaEmision, String paisActual, int millasRecorridas) {
         this.noPasaporte = noPasaporte;
         this.contrasenya = contrasenya;
         this.fechaDeNacimiento = fechaDeNacimiento;
@@ -51,7 +53,7 @@ public class Pasaporte {
         this.fechaDeVencimiento = fechaDeVencimiento;
         this.fechaEmision = fechaEmision;
         this.paisActual = paisActual;
-        this.micllasRecorridoas = micllasRecorridoas;
+        this.millasRecorridas = millasRecorridas;
     }
 
     /*Definidores y captadores respectivos
@@ -73,11 +75,11 @@ public class Pasaporte {
         this.contrasenya = contrasenya;
     }
 
-    public String getFechaDeNacimiento() {
+    public LocalDate getFechaDeNacimiento() {
         return fechaDeNacimiento;
     }
 
-    public void setFechaDeNacimiento(String fechaDeNacimiento) {
+    public void setFechaDeNacimiento(LocalDate fechaDeNacimiento) {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
@@ -121,19 +123,19 @@ public class Pasaporte {
         this.sexo = sexo;
     }
 
-    public String getFechaDeVencimiento() {
+    public LocalDate getFechaDeVencimiento() {
         return fechaDeVencimiento;
     }
 
-    public void setFechaDeVencimiento(String fechaDeVencimiento) {
+    public void setFechaDeVencimiento(LocalDate fechaDeVencimiento) {
         this.fechaDeVencimiento = fechaDeVencimiento;
     }
 
-    public String getFechaEmision() {
+    public LocalDate getFechaEmision() {
         return fechaEmision;
     }
 
-    public void setFechaEmision(String fechaEmision) {
+    public void setFechaEmision(LocalDate fechaEmision) {
         this.fechaEmision = fechaEmision;
     }
 
@@ -145,11 +147,11 @@ public class Pasaporte {
         this.paisActual = paisActual;
     }
 
-    public int getMicllasRecorridoas() {
-        return micllasRecorridoas;
+    public int getMillasRecorridas() {
+        return millasRecorridas;
     }
 
-    public void setMicllasRecorridoas(int micllasRecorridoas) {
-        this.micllasRecorridoas = micllasRecorridoas;
+    public void setMillasRecorridas(int millasRecorridas) {
+        this.millasRecorridas = millasRecorridas;
     }
 }

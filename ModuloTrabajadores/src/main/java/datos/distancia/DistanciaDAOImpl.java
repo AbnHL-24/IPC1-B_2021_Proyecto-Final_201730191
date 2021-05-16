@@ -1,7 +1,6 @@
 package datos.distancia;
 
 import controlador.archivos.ManejarArchivoBinario;
-import modelo.base.Aeropuerto;
 import modelo.base.Distancia;
 
 import static controlador.archivos.ManejarArchivo.*;
@@ -17,7 +16,7 @@ public class DistanciaDAOImpl implements DistanciaDAO{
     @Override
     public void crear(Distancia distancia) {
         crearDirectorio(PATH_DISTANCIA);
-        manejarArchivoBinario.crearArchivoBinario(PATH_DISTANCIA + distancia.getIdentificador() + EXTENSION_DISTANCIA, distancia);
+        manejarArchivoBinario.crearArchivoBinario(PATH_DISTANCIA + distancia.getIdentificadorDistancia() + EXTENSION_DISTANCIA, distancia);
     }
 
     @Override

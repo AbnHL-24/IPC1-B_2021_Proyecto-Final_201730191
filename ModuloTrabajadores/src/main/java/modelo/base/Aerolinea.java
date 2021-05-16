@@ -9,6 +9,7 @@ package modelo.base;
 public class Aerolinea {
     private String nombreAeropuerto;
     private String nombreAerolinea;
+    private String identificadorAerolinea;
 
     /**
      * Constructor de la clase Aerolinea.
@@ -18,6 +19,7 @@ public class Aerolinea {
     public Aerolinea(String nombreAeropuerto, String nombreAerolinea) {
         this.nombreAeropuerto = nombreAeropuerto;
         this.nombreAerolinea = nombreAerolinea;
+        this.identificadorAerolinea = nombreAerolinea + "-" + nombreAeropuerto;
     }
 
     /**
@@ -50,5 +52,13 @@ public class Aerolinea {
      */
     public void setNombreAerolinea(String nombreAerolinea) {
         this.nombreAerolinea = nombreAerolinea;
+    }
+
+    public String getIdentificadorAerolinea() {
+        return identificadorAerolinea;
+    }
+
+    public void setIdentificadorAerolinea(String identificadorAerolinea) {
+        this.identificadorAerolinea = identificadorAerolinea;
     }
 }
