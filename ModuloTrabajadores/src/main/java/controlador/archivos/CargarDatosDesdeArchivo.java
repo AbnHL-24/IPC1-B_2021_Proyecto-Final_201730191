@@ -20,24 +20,9 @@ public class CargarDatosDesdeArchivo {
     public void cargarDatos(String path) {
         ArrayList<String> datos = ManejarArchivo.leerArchivo(path);
 
-        //prueba
-        for (int i = 0; i < datos.size(); i++) {
-            System.out.println(datos.get(i));
-        }
-        System.out.println();
-        System.out.println();
-        //fin de prueba
-
         for (int i = 0; i < datos.size(); i++) {
             int indice = i + 1;
             String[] parametros = obtenerParametros(datos.get(i));
-
-            //prueba
-            for (int j = 0; j < parametros.length; j++) {
-                System.out.print(parametros[j] + " ");
-            }
-            System.out.println();
-            //fin de prueba
 
             if (datos.get(i).startsWith("AEROPUERTO")) {
                 generarObjetos.generarAeropuerto(parametros, indice);

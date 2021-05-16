@@ -25,7 +25,7 @@ public class ValidacionAvion extends Validacion{
                 validacion = anyadirError(validacion,"El codigo del avion ya ha sido utilizado");
             }
         } else {
-            validacion = anyadirError(validacion,"El codigo del avion no es un entero");
+            validacion = anyadirError(validacion,"El codigo del avion no tiene un formato correcto");
         }
 
         if (!isInt(parametros[3])) {

@@ -18,7 +18,7 @@ public class ValidacionVuelo extends Validacion {
                 validacion = anyadirError(validacion,"El codigo del vuelo ya ha sido utilizado");
             }
         } else {
-            validacion = anyadirError(validacion,"El codigo del avion no es un entero");
+            validacion = anyadirError(validacion,"El codigo del avion tiene un formato incorrecto");
         }
 
         if (isInt(parametros[1])) {
@@ -26,7 +26,7 @@ public class ValidacionVuelo extends Validacion {
                 validacion = anyadirError(validacion,"El codigo del avion no existe");
             }
         } else {
-            validacion = anyadirError(validacion,"El codigo del avion no es un entero");
+            validacion = anyadirError(validacion,"El codigo del avion tiene un formato incorrecto");
         }
 
         if (!aeropuertoDAO.existe(parametros[2])) {
