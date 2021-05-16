@@ -1,12 +1,14 @@
 package modelo.base;
 
+import java.io.Serializable;
+
 /**
  * Crea una aerolinea, que contiene aviones y puede generar vuelos
  * @see Avion
  * @see Vuelo
  * @author abnerhl
  */
-public class Aerolinea {
+public class Aerolinea implements Serializable {
     private String nombreAeropuerto;
     private String nombreAerolinea;
     private String identificadorAerolinea;

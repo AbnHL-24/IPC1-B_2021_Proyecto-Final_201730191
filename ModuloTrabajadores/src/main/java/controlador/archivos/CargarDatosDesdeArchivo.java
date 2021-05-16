@@ -1,5 +1,6 @@
 package controlador.archivos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import static controlador.archivos.GenerarObjetos.*;
@@ -10,42 +11,57 @@ import static controlador.archivos.GenerarObjetos.*;
  */
 public class CargarDatosDesdeArchivo {
     //static String path = "src/main/resources/cargaObjetos.txt";
+    GenerarObjetos generarObjetos = new GenerarObjetos();
 
-    public static void obtenerDatos(String path) {
+    /**
+     * Carga los datos de un archivo .txt
+     * @param path ruta del archivo del cualse vana a cargar los datos.
+     */
+    public void cargarDatos(String path) {
         ArrayList<String> datos = ManejarArchivo.leerArchivo(path);
-        generarObjetos(datos);
-    }
 
-    private static void generarObjetos(ArrayList<String> datos) {
+        //prueba
+        for (int i = 0; i < datos.size(); i++) {
+            System.out.println(datos.get(i));
+        }
+        System.out.println();
+        System.out.println();
+        //fin de prueba
+
         for (int i = 0; i < datos.size(); i++) {
             int indice = i + 1;
             String[] parametros = obtenerParametros(datos.get(i));
 
+            //prueba
+            for (int j = 0; j < parametros.length; j++) {
+                System.out.print(parametros[j] + " ");
+            }
+            System.out.println();
+            //fin de prueba
+
             if (datos.get(i).startsWith("AEROPUERTO")) {
-                generarAeropuerto(parametros, indice);
+                generarObjetos.generarAeropuerto(parametros, indice);
             } else if (datos.get(i).startsWith("AEROLINEA")) {
-                generarAerolinea(parametros, indice);
+                generarObjetos.generarAerolinea(parametros, indice);
             } else if (datos.get(i).startsWith("AVION")) {
-                generarAvion(parametros, indice);
+                generarObjetos.generarAvion(parametros, indice);
             } else if (datos.get(i).startsWith("DISTANCIA")) {
-                generarDistancia(parametros, indice);
+                generarObjetos.generarDistancia(parametros, indice);
             } else if (datos.get(i).startsWith("VUELO")) {
-                generarVuelo(parametros, indice);
+                generarObjetos.generarVuelo(parametros, indice);
             } else if (datos.get(i).startsWith("PASAPORTE")) {
-                generarPasaporte(parametros, indice);
+                generarObjetos.generarPasaporte(parametros, indice);
             } else if (datos.get(i).startsWith("TARJETA")) {
-                generarTarjeta(parametros, indice);
+                generarObjetos.generarTarjeta(parametros, indice);
             } else if (datos.get(i).startsWith("RENOVACION_PASAPORTE")) {
-                generarRenovacionPasaporte(parametros, indice);
+                generarObjetos.generarRenovacionPasaporte(parametros, indice);
             } else if (datos.get(i).startsWith("RESERVACION")) {
-                generarReservacion(parametros, indice);
+                generarObjetos.generarReservacion(parametros, indice);
             } else {
-                errorCoincidenciaNula(indice);
+                generarObjetos.errorCoincidenciaNula(indice);
             }
         }
     }
-
-
 
     /**
      * Este metodo obtiene la cadena 'dato' para separarla en los parametros del objeto a crear.
@@ -54,7 +70,7 @@ public class CargarDatosDesdeArchivo {
      * @param dato Cadena que contiene los parametros en una sola linea de texto.
      * @return Retorna los parametros en forma de arreglo de tipo String, lista para usar en la creacion de un objeto.
      */
-    private static String[] obtenerParametros(String dato) {
+    private String[] obtenerParametros(String dato) {
         // A indiceAbrirParentesis le sumamos uno porque el metodo substring incluye al primer indice.
         int indiceAbrirParentesis = dato.indexOf("(") +1;
         // A indiceAbrirParentesis no le sumamos uno porque el metodo substring excluye al segundo indice.
@@ -62,5 +78,9 @@ public class CargarDatosDesdeArchivo {
         String datos = dato.substring(indiceAbrirParentesis, indiceCerrarParentesis);
         String[] parametros = datos.split(",");
         return parametros;
+    }
+
+    public ArrayList<String> obtenerResultados() {
+        return generarObjetos.getResutadosDeCargaDeDatos();
     }
 }

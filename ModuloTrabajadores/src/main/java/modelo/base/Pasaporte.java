@@ -5,6 +5,7 @@ package modelo.base;
  */
 import modelo.base.soporte.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -12,8 +13,8 @@ import java.time.LocalDate;
  * Contiene un numero unci, una contraseña, fechas de nacimiento, emmision y caducidad del documento, y demas datos personales del cliente.
  * @author abnerhl
  */
-public class Pasaporte {
-    private long noPasaporte;
+public class Pasaporte implements Serializable {
+    private String noPasaporte;
     private String contrasenya;
     private LocalDate fechaDeNacimiento;
     private String nacionalidad;
@@ -41,7 +42,9 @@ public class Pasaporte {
      * @param paisActual Pais en el que se encuentra actualmente ell pasajero.
      * @param millasRecorridas Millas que ha recorrido el pasajero.
      */
-    public Pasaporte(long noPasaporte, String contrasenya, LocalDate fechaDeNacimiento, String nacionalidad, EstadoCivil estadoCivil, String nombre, String apellidos, Sexo sexo, LocalDate fechaDeVencimiento, LocalDate fechaEmision, String paisActual, int millasRecorridas) {
+    public Pasaporte(String noPasaporte, String contrasenya, LocalDate fechaDeNacimiento, String nacionalidad,
+                     EstadoCivil estadoCivil, String nombre, String apellidos, Sexo sexo, LocalDate fechaDeVencimiento,
+                     LocalDate fechaEmision, String paisActual, int millasRecorridas) {
         this.noPasaporte = noPasaporte;
         this.contrasenya = contrasenya;
         this.fechaDeNacimiento = fechaDeNacimiento;
@@ -59,11 +62,11 @@ public class Pasaporte {
     /*Definidores y captadores respectivos
     */
 
-    public long getNoPasaporte() {
+    public String getNoPasaporte() {
         return noPasaporte;
     }
 
-    public void setNoPasaporte(long noPasaporte) {
+    public void setNoPasaporte(String noPasaporte) {
         this.noPasaporte = noPasaporte;
     }
 

@@ -1,11 +1,13 @@
 package modelo.base;
 
+import java.io.Serializable;
+
 /**
  * Esta clase permite realizar la compra de vuelos. Se asocia a un pasajero.
  * @see Pasaporte
  * @author abnerhl
  */
-public class Tarjeta {
+public class Tarjeta implements Serializable {
     private long no_Tarjeta;
     private long no_Pasaporte;
     private int dineroActual;

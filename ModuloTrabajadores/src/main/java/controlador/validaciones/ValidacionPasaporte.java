@@ -19,7 +19,7 @@ public class ValidacionPasaporte extends Validacion{
                 validacion = anyadirError(validacion,"El numero del pasaporte ya existe");
             }
         } else {
-            validacion = anyadirError(validacion,"El numero del pasaporte no es un numero largo");
+            validacion = anyadirError(validacion,"El formato es incorrecto.");
         }
         if (!isFecha(parametros[2])) {
             validacion = anyadirError(validacion,"La fecha de nacimiento no es un formato correcto");
@@ -36,7 +36,7 @@ public class ValidacionPasaporte extends Validacion{
         if (!isFecha(parametros[9])) {
             validacion = anyadirError(validacion,"La fecha de emision no es un formato correcto");
         }
-        if (!isInt(parametros[1])) {
+        if (!isInt(parametros[11])) {
             validacion = anyadirError(validacion,"el numero de millas tiene un formato incorrecto");
         }
 

@@ -1,5 +1,6 @@
 package modelo.base;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -7,7 +8,7 @@ import java.time.LocalDate;
  * @see Pasaporte
  * @author abnerhl
  */
-public class RenovacionPasaporte {
+public class RenovacionPasaporte implements Serializable {
     long NO_Pasaporte;
     LocalDate fechaNuevoVencimiento;
 

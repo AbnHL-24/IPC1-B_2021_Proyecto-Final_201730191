@@ -2,6 +2,7 @@ package modelo.base;
 
 import modelo.base.soporte.EstadoVuelo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -10,14 +11,14 @@ import java.time.LocalDate;
  * @see Aeropuerto
  * @author abnerhl
  */
-public class Vuelo {
+public class Vuelo implements Serializable {
     private EstadoVuelo estadoVuelo = EstadoVuelo.EN_ESPERA;
-    private int codigoVuelo;
-    private int codigoAvion;
+    private String codigoVuelo;
+    private String codigoAvion;
     private String nombreAeropuertoOrigen;
     private String nombreAeropuertoDestino;
     private int precioBoleto;
-    private LocalDate fechaSalida; //cambiar cuando se sepa utilizar LocalDate
+    private LocalDate fechaSalida;
 
     /**
      * Constructor que genera el Vuelo de un avion entre dos aeropuertos.
@@ -28,7 +29,7 @@ public class Vuelo {
      * @param precioBoleto Precio del boleto del Vuelo.
      * @param fechaSalida fecha en que se realizo el Vuelo.
      */
-    public Vuelo(int codigoVuelo, int codigoAvion, String nombreAeropuertoOrigen, String nombreAeropuertoDestino, int precioBoleto, LocalDate fechaSalida) {
+    public Vuelo(String codigoVuelo, String codigoAvion, String nombreAeropuertoOrigen, String nombreAeropuertoDestino, int precioBoleto, LocalDate fechaSalida) {
         this.codigoVuelo = codigoVuelo;
         this.codigoAvion = codigoAvion;
         this.nombreAeropuertoOrigen = nombreAeropuertoOrigen;
@@ -45,19 +46,19 @@ public class Vuelo {
         this.estadoVuelo = estadoVuelo;
     }
 
-    public int getCodigoVuelo() {
+    public String getCodigoVuelo() {
         return codigoVuelo;
     }
 
-    public void setCodigoVuelo(int codigoVuelo) {
+    public void setCodigoVuelo(String codigoVuelo) {
         this.codigoVuelo = codigoVuelo;
     }
 
-    public int getCodigoAvion() {
+    public String getCodigoAvion() {
         return codigoAvion;
     }
 
-    public void setCodigoAvion(int codigoAvion) {
+    public void setCodigoAvion(String codigoAvion) {
         this.codigoAvion = codigoAvion;
     }
 

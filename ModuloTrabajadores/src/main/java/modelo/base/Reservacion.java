@@ -1,5 +1,7 @@
 package modelo.base;
 
+import java.io.Serializable;
+
 /**
  * Registra un pasajero en un Vuelo, el pasajero ya tiene un boleto comprado.
  * @see Vuelo
@@ -7,7 +9,7 @@ package modelo.base;
  * @see Tarjeta
  * @author abnerhl
  */
-public class Reservacion {
+public class Reservacion implements Serializable {
     private long NO_Pasaporte;
     private int codigoVuelo;
     private long NO_Tarjeta;

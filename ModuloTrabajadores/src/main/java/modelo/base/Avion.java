@@ -1,15 +1,17 @@
 package modelo.base;
 
+import java.io.Serializable;
+
 /**
  * Crea un avion que pertenece a una aerolinea, tiene un codigo unico y se encuentran en un aeropuerto.
  * @see Aerolinea
  * @see Aeropuerto
  * @author abnerhl
  */
-public class Avion {
+public class Avion implements Serializable {
     private String nombreAerolinea;
     private String nombreAeropuertoActual;
-    private int codigoAvion;
+    private String codigoAvion;
     private int capacidadPAsajeros;
     private int capacidadGasolina;
     private int consumoMilla;
@@ -23,7 +25,7 @@ public class Avion {
      * @param capacidadGasolina Es la capacidad del tanque de combustible del avion.
      * @param consumoMilla Es el consumo de gasolina del avion por milla recorrida.
      */
-    public Avion(String nombreAerolinea, String nombreAeropuertoActual, int codigoAvion, int capacidadPAsajeros, int capacidadGasolina, int consumoMilla) {
+    public Avion(String nombreAerolinea, String nombreAeropuertoActual, String codigoAvion, int capacidadPAsajeros, int capacidadGasolina, int consumoMilla) {
         this.nombreAerolinea = nombreAerolinea;
         this.nombreAeropuertoActual = nombreAeropuertoActual;
         this.codigoAvion = codigoAvion;
@@ -68,7 +70,7 @@ public class Avion {
      * Captador del codigo unico del avion.
      * @return retorna el codico unico del avion.
      */
-    public int getCodigoAvion() {
+    public String getCodigoAvion() {
         return codigoAvion;
     }
 
@@ -76,7 +78,7 @@ public class Avion {
      * Definidor del codigo unico del avion.
      * @param codigoAvion codigo unico del avion.
      */
-    public void setCodigoAvion(int codigoAvion) {
+    public void setCodigoAvion(String codigoAvion) {
         this.codigoAvion = codigoAvion;
     }
 

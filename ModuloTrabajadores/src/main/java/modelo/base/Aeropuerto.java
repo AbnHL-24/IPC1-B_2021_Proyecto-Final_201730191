@@ -3,6 +3,8 @@
  */
 package modelo.base;
 
+import java.io.Serializable;
+
 /**
  * Crea un aeropuerto que contiene aviones, aerolineas, distancias entre un aeropuerto y otros, desde el se generan vuelos.
  * @see Aerolinea
@@ -11,7 +13,7 @@ package modelo.base;
  * @see Vuelo
  * @author abnerhl
  */
-public class Aeropuerto {
+public class Aeropuerto implements Serializable {
     private String nombreAeropuerto;
     private String ciudad;
     private String pais;

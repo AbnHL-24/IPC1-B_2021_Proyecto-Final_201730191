@@ -22,8 +22,7 @@ public class VueloDAOImpl implements VueloDAO{
     @Override
     public void crear(Vuelo vuelo) {
         crearDirectorio(PATH_VUELO);
-        String codigoVuelo = String.valueOf(vuelo.getCodigoVuelo());
-        manejarArchivoBinario.crearArchivoBinario(PATH_VUELO + codigoVuelo + EXTENSION_VUELO, vuelo);
+        manejarArchivoBinario.crearArchivoBinario(PATH_VUELO + vuelo.getCodigoVuelo() + EXTENSION_VUELO, vuelo);
 
     }
 

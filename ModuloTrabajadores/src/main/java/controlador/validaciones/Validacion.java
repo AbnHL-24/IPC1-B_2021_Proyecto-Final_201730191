@@ -84,7 +84,7 @@ public class Validacion {
     public static boolean esUnSexo (String sexo) {
 
         for (Sexo s : Sexo.values()) {
-            if (s.name().equals(sexo)) {
+            if (s.name().equalsIgnoreCase(sexo)) {
                 return true;
             }
         }
@@ -93,7 +93,7 @@ public class Validacion {
 
     public static boolean esUnEstadoCivil(String s) {
         for (EstadoCivil sc : EstadoCivil.values()) {
-            if (sc.equals(s)) {
+            if (sc.name().equalsIgnoreCase(s)) {
                 return true;
             }
         }

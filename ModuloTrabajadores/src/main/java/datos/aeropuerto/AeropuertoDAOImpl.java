@@ -5,6 +5,7 @@ import modelo.base.Aeropuerto;
 
 import static controlador.archivos.ManejarArchivo.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * @see AeropuertoDAO
  * @author abnerhl
  */
-public class AeropuertoDAOImpl implements AeropuertoDAO{
+public class AeropuertoDAOImpl implements AeropuertoDAO {
     private final String HOME_USUARIO = System.getProperty("user.home");
     private final String PATH_AEROPUERTOS = HOME_USUARIO + "/datos/aeropuertos/";
     private final String EXTENSION_AEROPUERTO = ".aep";

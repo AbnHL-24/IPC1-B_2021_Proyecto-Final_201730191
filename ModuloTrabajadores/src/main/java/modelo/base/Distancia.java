@@ -1,5 +1,7 @@
 package modelo.base;
 
+import java.io.Serializable;
+
 /**
  * Clase que establece la distancia entre un aeropuerto origen y uno destino.
  * No se pueden realizar vuelos donde no halla una distancia entre el aeropuerto origen y el destino.
@@ -7,7 +9,7 @@ package modelo.base;
  * @see Vuelo
  * @author abnerhl
  */
-public class Distancia {
+public class Distancia implements Serializable {
     private String nombreAeropuertoOrigen;
     private String nombreAeropuertoDestino;
     private int cantidadMillas;
