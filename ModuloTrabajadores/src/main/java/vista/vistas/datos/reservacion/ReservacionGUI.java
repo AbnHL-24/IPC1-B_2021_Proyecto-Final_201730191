@@ -59,6 +59,11 @@ public class ReservacionGUI extends javax.swing.JPanel {
         btnAgregar.setText("Agregar");
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         btnBorrar.setText("Borrar");
 
@@ -66,13 +71,10 @@ public class ReservacionGUI extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         tblDatosReservacion.setViewportView(jTable1);
@@ -140,6 +142,10 @@ public class ReservacionGUI extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -215,6 +221,11 @@ public class ReservacionGUI extends javax.swing.JPanel {
         return tflNoTarjeta;
     }
 
-    
+    public void limpiarCampos() {
+        getTflNoPasaporte().setText("");
+        getTflCodigoVuelo().setText("");
+        getTflNoTarjeta().setText("");
+        getTflNoAsiento().setText("");
+    }
 
 }

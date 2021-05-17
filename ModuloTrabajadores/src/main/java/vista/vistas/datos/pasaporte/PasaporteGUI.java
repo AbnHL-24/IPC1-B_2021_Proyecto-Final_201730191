@@ -95,16 +95,18 @@ public class PasaporteGUI extends javax.swing.JPanel {
         btnActualizar.setText("Actualizar");
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -249,6 +251,10 @@ public class PasaporteGUI extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -404,6 +410,19 @@ public class PasaporteGUI extends javax.swing.JPanel {
         return tflSexo;
     }
 
-    
+    public void limpiarCampos() {
+        getTflNoPasaporte().setText("");
+        getTflContrasenya().setText("");
+        getTflFechaNacimiento().setText("");
+        getTflNacionalidad().setText("");
+        getTflEstadoCivil().setText("");
+        getTflNombre().setText("");
+        getTflApellidos().setText("");
+        getTflSexo().setText("");
+        getTflFechaVencimiento().setText("");
+        getTflFechaEmision().setText("");
+        getTflPaisActual().setText("");
+        getTflMillasRecorridas().setText("");
+    }
 
 }

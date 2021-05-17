@@ -61,18 +61,20 @@ public class TarjetaGUI extends javax.swing.JPanel {
         btnActualizar.setText("Actualizar");
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         btnBorrar.setText("Borrar");
 
         tblDatosTarjeta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane2.setViewportView(tblDatosTarjeta);
@@ -138,9 +140,13 @@ public class TarjetaGUI extends javax.swing.JPanel {
                     .addComponent(btnActualizar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        limparCampos();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -216,6 +222,11 @@ public class TarjetaGUI extends javax.swing.JPanel {
         return tflNoTarjeta;
     }
 
-    
+    public void limparCampos() {
+        getTflNoTarjeta().setText("");
+        getTflNoPasaporte().setText("");
+        getTflDineroActual().setText("");
+        getTflCodigoCVC().setText("");
+    }
 
 }

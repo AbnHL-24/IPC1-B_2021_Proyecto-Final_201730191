@@ -71,16 +71,18 @@ public class VueloGUI extends javax.swing.JPanel {
         btnBorrar.setText("Borrar");
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         tblDatosVuelos.setViewportView(jTable1);
@@ -167,6 +169,10 @@ public class VueloGUI extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        limparCampos();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -262,6 +268,13 @@ public class VueloGUI extends javax.swing.JPanel {
         return tflPrecioBoleto;
     }
 
-    
+    public void limparCampos() {
+        getTflCodigoVuelo().setText("");
+        getTflCodigoAvion().setText("");
+        getTflNombreAeropuertoDestino().setText("");
+        getTflNombreAeropuertoOrigen().setText("");
+        getTflPrecioBoleto().setText("");
+        getTflFechaSalida().setText("");
+    }
 
 }

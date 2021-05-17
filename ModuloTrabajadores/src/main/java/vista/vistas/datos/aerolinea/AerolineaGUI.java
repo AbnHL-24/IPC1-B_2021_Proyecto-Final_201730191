@@ -5,6 +5,12 @@
  */
 package vista.vistas.datos.aerolinea;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author abnerhl
@@ -49,16 +55,18 @@ public class AerolineaGUI extends javax.swing.JPanel {
         btnBorrar.setText("Borrar");
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         tblDatosAerolineas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(tblDatosAerolineas);
@@ -109,9 +117,13 @@ public class AerolineaGUI extends javax.swing.JPanel {
                     .addComponent(btnLimpiar))
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -126,4 +138,50 @@ public class AerolineaGUI extends javax.swing.JPanel {
     private javax.swing.JTextField tflNombreAerolinea;
     private javax.swing.JTextField tflNombreAeropuerto;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnActualizar() {
+        return btnActualizar;
+    }
+
+    public JButton getBtnAgregar() {
+        return btnAgregar;
+    }
+
+    public JButton getBtnBorrar() {
+        return btnBorrar;
+    }
+
+    public JButton getBtnLimpiar() {
+        return btnLimpiar;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public JLabel getLblNombreAerolinea() {
+        return lblNombreAerolinea;
+    }
+
+    public JLabel getLblNombreAeropuerto() {
+        return lblNombreAeropuerto;
+    }
+
+    public JTable getTblDatosAerolineas() {
+        return tblDatosAerolineas;
+    }
+
+    public JTextField getTflNombreAerolinea() {
+        return tflNombreAerolinea;
+    }
+
+    public JTextField getTflNombreAeropuerto() {
+        return tflNombreAeropuerto;
+    }
+
+    public void limpiarCampos() {
+        getTflNombreAerolinea().setText("");
+        getTflNombreAeropuerto().setText("");
+    }
+
 }
