@@ -25,7 +25,8 @@ public class Avion implements Serializable {
      * @param capacidadGasolina Es la capacidad del tanque de combustible del avion.
      * @param consumoMilla Es el consumo de gasolina del avion por milla recorrida.
      */
-    public Avion(String nombreAerolinea, String nombreAeropuertoActual, String codigoAvion, int capacidadPAsajeros, int capacidadGasolina, int consumoMilla) {
+    public Avion(String nombreAerolinea, String nombreAeropuertoActual, String codigoAvion, int capacidadPAsajeros,
+                 int capacidadGasolina, int consumoMilla) {
         this.nombreAerolinea = nombreAerolinea;
         this.nombreAeropuertoActual = nombreAeropuertoActual;
         this.codigoAvion = codigoAvion;

@@ -29,7 +29,8 @@ public class Vuelo implements Serializable {
      * @param precioBoleto Precio del boleto del Vuelo.
      * @param fechaSalida fecha en que se realizo el Vuelo.
      */
-    public Vuelo(String codigoVuelo, String codigoAvion, String nombreAeropuertoOrigen, String nombreAeropuertoDestino, int precioBoleto, LocalDate fechaSalida) {
+    public Vuelo(String codigoVuelo, String codigoAvion, String nombreAeropuertoOrigen, String nombreAeropuertoDestino,
+                 int precioBoleto, LocalDate fechaSalida) {
         this.codigoVuelo = codigoVuelo;
         this.codigoAvion = codigoAvion;
         this.nombreAeropuertoOrigen = nombreAeropuertoOrigen;
