@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 public class Reservacion implements Serializable, Arrayable {
     private long NO_Pasaporte;
-    private int codigoVuelo;
+    private String codigoVuelo;
     private long NO_Tarjeta;
     private int NO_Asiento;
 
@@ -24,7 +24,7 @@ public class Reservacion implements Serializable, Arrayable {
      * @param NO_Tarjeta Es el numero de la tarjeta del pasajero.
      * @param NO_Asiento Es el numero de asiento que ocupara el pasajero.
      */
-    public Reservacion(long NO_Pasaporte, int codigoVuelo, long NO_Tarjeta, int NO_Asiento) {
+    public Reservacion(long NO_Pasaporte, String codigoVuelo, long NO_Tarjeta, int NO_Asiento) {
         this.NO_Pasaporte = NO_Pasaporte;
         this.codigoVuelo = codigoVuelo;
         this.NO_Tarjeta = NO_Tarjeta;
@@ -39,11 +39,11 @@ public class Reservacion implements Serializable, Arrayable {
         this.NO_Pasaporte = NO_Pasaporte;
     }
 
-    public int getCodigoVuelo() {
+    public String getCodigoVuelo() {
         return codigoVuelo;
     }
 
-    public void setCodigoVuelo(int codigoVuelo) {
+    public void setCodigoVuelo(String codigoVuelo) {
         this.codigoVuelo = codigoVuelo;
     }
 

@@ -2,6 +2,7 @@ package controlador.interfaz;
 
 import controlador.base.*;
 import vista.ventanas.administrador.AdministradorGUI;
+import vista.vistas.cargainformacion.CargarInformacion;
 import vista.vistas.datos.aerolinea.AerolineaGUI;
 import vista.vistas.datos.aeropuerto.AeropuertoGUI;
 import vista.vistas.datos.avion.AvionGUI;
@@ -10,6 +11,7 @@ import vista.vistas.datos.pasaporte.PasaporteGUI;
 import vista.vistas.datos.renovacionpasaporte.RenovacionPasaporteGUI;
 import vista.vistas.datos.reservacion.ReservacionGUI;
 import vista.vistas.datos.tarjeta.TarjetaGUI;
+import vista.vistas.datos.usuario.UsuarioGUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,6 +32,8 @@ public class AdministradorCTRL implements ActionListener {
         this.administradorGUI.getMnReservacion().addActionListener(this);
         this.administradorGUI.getMnTarjetas().addActionListener(this);
         this.administradorGUI.getMnVuelos().addActionListener(this);
+        this.administradorGUI.getMnUsuarios().addActionListener(this);
+        this.administradorGUI.getMnCargarArchivo().addActionListener(this);
 
     }
 
@@ -77,6 +81,14 @@ public class AdministradorCTRL implements ActionListener {
             TarjetaGUI tarjetaGUI = new TarjetaGUI();
             TarjetaCTRL tarjetaCTRL = new TarjetaCTRL(tarjetaGUI);
             tarjetaCTRL.iniciar(administradorGUI.getPnlBase());
+        } else if (e.getSource() == administradorGUI.getMnUsuarios()) {
+            UsuarioGUI usuarioGUI = new UsuarioGUI();
+            UsuarioCTRL usuarioCTRL = new UsuarioCTRL(usuarioGUI);
+            usuarioCTRL.iniciar(administradorGUI.getPnlBase());
+        } else if (e.getSource() == administradorGUI.getMnCargarArchivo()) {
+            CargarInformacion cargarInformacion = new CargarInformacion();
+            CargarArchivoCTRL cargarArchivoCTRL = new CargarArchivoCTRL(cargarInformacion);
+            cargarArchivoCTRL.iniciar(administradorGUI.getPnlBase());
         }
     }
 }

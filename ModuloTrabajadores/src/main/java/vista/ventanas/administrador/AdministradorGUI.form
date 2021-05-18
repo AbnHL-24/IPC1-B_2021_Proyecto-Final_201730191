@@ -49,6 +49,11 @@
                 <Property name="text" type="java.lang.String" value="Tarjetas"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnUsuarios">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Usuarios"/>
+              </Properties>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnVuelos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Vuelos"/>
@@ -60,6 +65,13 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Operacion"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="mnCargarArchivo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cargar desde archivo"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

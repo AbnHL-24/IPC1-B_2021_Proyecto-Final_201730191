@@ -1,22 +1,36 @@
 package modelo.trabajadores;
 
-public class Usuario {
-    String nombreUsuario;
-    String contrasenya;
+import modelo.tablas.Arrayable;
 
-    protected String getNombreUsuario() {
+import java.io.Serializable;
+
+public class Usuario implements Serializable, Arrayable {
+    protected String nombreUsuario;
+    protected String contrasenya;
+
+    public Usuario(String nombreUsuario, String contrasenya) {
+        this.nombreUsuario = nombreUsuario;
+        this.contrasenya = contrasenya;
+    }
+
+    public String getNombreUsuario() {
         return nombreUsuario;
     }
 
-    protected void setNombreUsuario(String nombreUsuario) {
+    public void setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
     }
 
-    protected String getContrasenya() {
+    public String getContrasenya() {
         return contrasenya;
     }
 
-    protected void setContrasenya(String contrasenya) {
+    public void setContrasenya(String contrasenya) {
         this.contrasenya = contrasenya;
+    }
+
+    @Override
+    public String[] toArray() {
+        return new String[] {nombreUsuario};
     }
 }

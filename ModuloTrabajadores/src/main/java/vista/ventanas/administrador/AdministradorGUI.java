@@ -44,8 +44,10 @@ public class AdministradorGUI extends javax.swing.JFrame {
         mnRenovacionPasaportes = new javax.swing.JMenuItem();
         mnReservacion = new javax.swing.JMenuItem();
         mnTarjetas = new javax.swing.JMenuItem();
+        mnUsuarios = new javax.swing.JMenuItem();
         mnVuelos = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        mnCargarArchivo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,12 +88,19 @@ public class AdministradorGUI extends javax.swing.JFrame {
         mnTarjetas.setText("Tarjetas");
         jmnAdministracion.add(mnTarjetas);
 
+        mnUsuarios.setText("Usuarios");
+        jmnAdministracion.add(mnUsuarios);
+
         mnVuelos.setText("Vuelos");
         jmnAdministracion.add(mnVuelos);
 
         jMenuBar1.add(jmnAdministracion);
 
         jMenu2.setText("Operacion");
+
+        mnCargarArchivo.setText("Cargar desde archivo");
+        jMenu2.add(mnCargarArchivo);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -159,11 +168,13 @@ public class AdministradorGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnAerolineas;
     private javax.swing.JMenuItem mnAeropuertos;
     private javax.swing.JMenuItem mnAviones;
+    private javax.swing.JMenuItem mnCargarArchivo;
     private javax.swing.JMenuItem mnDistancias;
     private javax.swing.JMenuItem mnPasaportes;
     private javax.swing.JMenuItem mnRenovacionPasaportes;
     private javax.swing.JMenuItem mnReservacion;
     private javax.swing.JMenuItem mnTarjetas;
+    private javax.swing.JMenuItem mnUsuarios;
     private javax.swing.JMenuItem mnVuelos;
     private javax.swing.JPanel pnlBase;
     // End of variables declaration//GEN-END:variables
@@ -230,6 +241,14 @@ public class AdministradorGUI extends javax.swing.JFrame {
 
     public JMenuItem getMnVuelos() {
         return mnVuelos;
+    }
+
+    public JMenuItem getMnUsuarios() {
+        return mnUsuarios;
+    }
+
+    public JMenuItem getMnCargarArchivo() {
+        return mnCargarArchivo;
     }
 
     

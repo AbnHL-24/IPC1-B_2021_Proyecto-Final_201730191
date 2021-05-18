@@ -54,7 +54,6 @@ public class DistanciaCTRL implements ActionListener {
         String erroresDistancia = validarDistancia(parametros);
         if ("".equals(erroresDistancia)) {
             Distancia distancia = new Distancia(parametros[0], parametros[1], Integer.parseInt(parametros[2]));
-            DistanciaDAOImpl distanciaDAO = new DistanciaDAOImpl();
             distanciaDAO.crear(distancia);
             generadorTabla.generar(distanciaDAO.obtenerList());
         } else {

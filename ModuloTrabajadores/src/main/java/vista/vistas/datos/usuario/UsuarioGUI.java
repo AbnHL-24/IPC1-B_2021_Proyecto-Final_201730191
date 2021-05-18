@@ -6,6 +6,7 @@
 package vista.vistas.datos.usuario;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
@@ -39,13 +40,15 @@ public class UsuarioGUI extends javax.swing.JPanel {
         lblContrasenya = new javax.swing.JLabel();
         pflContrasenya = new javax.swing.JPasswordField();
         lblTipoUsuario = new javax.swing.JLabel();
-        tflTipoUsuario = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnBorrar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         tblDatosUsuarios = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblDatos = new javax.swing.JTable();
+        cmbTIpoUsuario = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        tflAsociacion = new javax.swing.JTextField();
 
         lblNombreUsuario.setText("Nombre usuario:");
 
@@ -66,7 +69,7 @@ public class UsuarioGUI extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -74,24 +77,16 @@ public class UsuarioGUI extends javax.swing.JPanel {
 
             }
         ));
-        tblDatosUsuarios.setViewportView(jTable1);
+        tblDatosUsuarios.setViewportView(tblDatos);
+
+        cmbTIpoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Gerente", "Operador" }));
+
+        jLabel1.setText("Aerolinea/Aeropuerto");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreUsuario)
-                    .addComponent(lblContrasenya)
-                    .addComponent(lblTipoUsuario))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tflNombreUsuario)
-                    .addComponent(pflContrasenya, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                    .addComponent(tflTipoUsuario))
-                .addGap(59, 59, 59))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(btnAgregar)
@@ -106,11 +101,25 @@ public class UsuarioGUI extends javax.swing.JPanel {
                 .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(tblDatosUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblContrasenya)
+                    .addComponent(lblNombreUsuario)
+                    .addComponent(lblTipoUsuario)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tflNombreUsuario)
+                    .addComponent(pflContrasenya, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addComponent(cmbTIpoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tflAsociacion))
+                .addGap(57, 57, 57))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombreUsuario)
                     .addComponent(tflNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -121,8 +130,12 @@ public class UsuarioGUI extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTipoUsuario)
-                    .addComponent(tflTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                    .addComponent(cmbTIpoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(tflAsociacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
                     .addComponent(btnLimpiar)
@@ -144,14 +157,16 @@ public class UsuarioGUI extends javax.swing.JPanel {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JComboBox<String> cmbTIpoUsuario;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblContrasenya;
     private javax.swing.JLabel lblNombreUsuario;
     private javax.swing.JLabel lblTipoUsuario;
     private javax.swing.JPasswordField pflContrasenya;
+    private javax.swing.JTable tblDatos;
     private javax.swing.JScrollPane tblDatosUsuarios;
+    private javax.swing.JTextField tflAsociacion;
     private javax.swing.JTextField tflNombreUsuario;
-    private javax.swing.JTextField tflTipoUsuario;
     // End of variables declaration//GEN-END:variables
 
     public JButton getBtnActualizar() {
@@ -171,7 +186,7 @@ public class UsuarioGUI extends javax.swing.JPanel {
     }
 
     public JTable getjTable1() {
-        return jTable1;
+        return tblDatos;
     }
 
     public JLabel getLblContrasenya() {
@@ -198,14 +213,26 @@ public class UsuarioGUI extends javax.swing.JPanel {
         return tflNombreUsuario;
     }
 
-    public JTextField getTflTipoUsuario() {
-        return tflTipoUsuario;
-    }
-
-    public void limpiarCampos() {
-        getTflTipoUsuario().setText("");
+       public void limpiarCampos() {
         getTflNombreUsuario().setText("");
         getPflContrasenya().setText("");
     }
+
+    public JComboBox<String> getCmbTIpoUsuario() {
+        return cmbTIpoUsuario;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JTable getTblDatos() {
+        return tblDatos;
+    }
+
+    public JTextField getTflAsociacion() {
+        return tflAsociacion;
+    }
     
+       
 }
