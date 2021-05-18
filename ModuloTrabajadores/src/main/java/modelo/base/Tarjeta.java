@@ -1,5 +1,7 @@
 package modelo.base;
 
+import modelo.tablas.Arrayable;
+
 import java.io.Serializable;
 
 /**
@@ -7,7 +9,7 @@ import java.io.Serializable;
  * @see Pasaporte
  * @author abnerhl
  */
-public class Tarjeta implements Serializable {
+public class Tarjeta implements Serializable, Arrayable {
     private long no_Tarjeta;
     private long no_Pasaporte;
     private int dineroActual;
@@ -57,5 +59,11 @@ public class Tarjeta implements Serializable {
 
     public void setCodigoCV(int codigoCV) {
         this.codigoCV = codigoCV;
+    }
+
+    @Override
+    public String[] toArray() {
+        return new String[] {String.valueOf(no_Tarjeta), String.valueOf(no_Pasaporte), String.valueOf(dineroActual),
+        String.valueOf(codigoCV)};
     }
 }

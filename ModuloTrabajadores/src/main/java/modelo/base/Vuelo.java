@@ -1,6 +1,7 @@
 package modelo.base;
 
 import modelo.base.soporte.EstadoVuelo;
+import modelo.tablas.Arrayable;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -11,7 +12,7 @@ import java.time.LocalDate;
  * @see Aeropuerto
  * @author abnerhl
  */
-public class Vuelo implements Serializable {
+public class Vuelo implements Serializable, Arrayable {
     private EstadoVuelo estadoVuelo = EstadoVuelo.EN_ESPERA;
     private String codigoVuelo;
     private String codigoAvion;
@@ -93,5 +94,11 @@ public class Vuelo implements Serializable {
 
     public void setFechaSalida(LocalDate fechaSalida) {
         this.fechaSalida = fechaSalida;
+    }
+
+    @Override
+    public String[] toArray() {
+        return new String[] {codigoVuelo, codigoAvion, nombreAeropuertoOrigen, nombreAeropuertoDestino,
+        String.valueOf(precioBoleto), String.valueOf(fechaSalida) };
     }
 }

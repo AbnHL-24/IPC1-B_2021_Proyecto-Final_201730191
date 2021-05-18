@@ -1,5 +1,7 @@
 package modelo.base;
 
+import modelo.tablas.Arrayable;
+
 import java.io.Serializable;
 
 /**
@@ -9,7 +11,7 @@ import java.io.Serializable;
  * @see Tarjeta
  * @author abnerhl
  */
-public class Reservacion implements Serializable {
+public class Reservacion implements Serializable, Arrayable {
     private long NO_Pasaporte;
     private int codigoVuelo;
     private long NO_Tarjeta;
@@ -59,5 +61,10 @@ public class Reservacion implements Serializable {
 
     public void setNO_Asiento(int NO_Asiento) {
         this.NO_Asiento = NO_Asiento;
+    }
+
+    @Override
+    public String[] toArray() {
+        return new String[] {String.valueOf(NO_Pasaporte), String.valueOf(codigoVuelo), String.valueOf(NO_Tarjeta), String.valueOf(NO_Asiento)};
     }
 }

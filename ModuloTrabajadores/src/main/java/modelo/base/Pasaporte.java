@@ -4,6 +4,7 @@ package modelo.base;
  * Paquete donde estan algunos complementos necesarios para algunas clases del paquete modelo.base
  */
 import modelo.base.soporte.*;
+import modelo.tablas.Arrayable;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -13,7 +14,7 @@ import java.time.LocalDate;
  * Contiene un numero unci, una contraseña, fechas de nacimiento, emmision y caducidad del documento, y demas datos personales del cliente.
  * @author abnerhl
  */
-public class Pasaporte implements Serializable {
+public class Pasaporte implements Serializable, Arrayable {
     private String noPasaporte;
     private String contrasenya;
     private LocalDate fechaDeNacimiento;
@@ -156,5 +157,12 @@ public class Pasaporte implements Serializable {
 
     public void setMillasRecorridas(int millasRecorridas) {
         this.millasRecorridas = millasRecorridas;
+    }
+
+    @Override
+    public String[] toArray() {
+        return new String[] {noPasaporte, contrasenya, String.valueOf(fechaDeNacimiento), nacionalidad,
+                String.valueOf(estadoCivil), nombre, apellidos, String.valueOf(sexo), String.valueOf(fechaDeVencimiento),
+                String.valueOf(fechaEmision), paisActual, String.valueOf(millasRecorridas)};
     }
 }

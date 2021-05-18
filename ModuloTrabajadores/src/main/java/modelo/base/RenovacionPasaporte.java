@@ -1,5 +1,7 @@
 package modelo.base;
 
+import modelo.tablas.Arrayable;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -8,7 +10,7 @@ import java.time.LocalDate;
  * @see Pasaporte
  * @author abnerhl
  */
-public class RenovacionPasaporte implements Serializable {
+public class RenovacionPasaporte implements Serializable, Arrayable {
     long NO_Pasaporte;
     LocalDate fechaNuevoVencimiento;
 
@@ -36,5 +38,10 @@ public class RenovacionPasaporte implements Serializable {
 
     public void setFechaNuevoVencimiento(LocalDate fechaNuevoVencimiento) {
         this.fechaNuevoVencimiento = fechaNuevoVencimiento;
+    }
+
+    @Override
+    public String[] toArray() {
+        return new String[] {String.valueOf(NO_Pasaporte), String.valueOf(fechaNuevoVencimiento)};
     }
 }

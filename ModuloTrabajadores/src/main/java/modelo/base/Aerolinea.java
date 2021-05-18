@@ -1,5 +1,7 @@
 package modelo.base;
 
+import modelo.tablas.Arrayable;
+
 import java.io.Serializable;
 
 /**
@@ -8,7 +10,7 @@ import java.io.Serializable;
  * @see Vuelo
  * @author abnerhl
  */
-public class Aerolinea implements Serializable {
+public class Aerolinea implements Serializable, Arrayable {
     private String nombreAeropuerto;
     private String nombreAerolinea;
     private String identificadorAerolinea;
@@ -62,5 +64,10 @@ public class Aerolinea implements Serializable {
 
     public void setIdentificadorAerolinea(String identificadorAerolinea) {
         this.identificadorAerolinea = identificadorAerolinea;
+    }
+
+    @Override
+    public String[] toArray() {
+        return new String[] {nombreAeropuerto, nombreAerolinea};
     }
 }

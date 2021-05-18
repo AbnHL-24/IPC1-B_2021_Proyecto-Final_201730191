@@ -3,6 +3,8 @@
  */
 package modelo.base;
 
+import modelo.tablas.Arrayable;
+
 import java.io.Serializable;
 
 /**
@@ -13,7 +15,7 @@ import java.io.Serializable;
  * @see Vuelo
  * @author abnerhl
  */
-public class Aeropuerto implements Serializable {
+public class Aeropuerto implements Serializable, Arrayable {
     private String nombreAeropuerto;
     private String ciudad;
     private String pais;
@@ -82,5 +84,10 @@ public class Aeropuerto implements Serializable {
 
     public void setCantidadAviones(int cantidadAviones) {
         this.cantidadAviones = cantidadAviones;
+    }
+
+    @Override
+    public String[] toArray() {
+        return new String[] {nombreAeropuerto, ciudad, pais};
     }
 }

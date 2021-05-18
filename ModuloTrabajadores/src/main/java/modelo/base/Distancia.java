@@ -1,5 +1,7 @@
 package modelo.base;
 
+import modelo.tablas.Arrayable;
+
 import java.io.Serializable;
 
 /**
@@ -9,7 +11,7 @@ import java.io.Serializable;
  * @see Vuelo
  * @author abnerhl
  */
-public class Distancia implements Serializable {
+public class Distancia implements Serializable, Arrayable {
     private String nombreAeropuertoOrigen;
     private String nombreAeropuertoDestino;
     private int cantidadMillas;
@@ -82,5 +84,10 @@ public class Distancia implements Serializable {
 
     public void setIdentificadorDistancia(String identificadorDistancia) {
         this.identificadorDistancia = identificadorDistancia;
+    }
+
+    @Override
+    public String[] toArray() {
+        return new String[] {nombreAeropuertoOrigen, nombreAeropuertoDestino, String.valueOf(cantidadMillas)};
     }
 }
