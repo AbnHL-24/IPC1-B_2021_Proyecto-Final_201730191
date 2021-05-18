@@ -43,8 +43,8 @@ public class DistanciaGUI extends javax.swing.JPanel {
         btnActualizar = new javax.swing.JButton();
         btnBorrar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
-        tblDatosDistancias = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblDatosDistancias = new javax.swing.JTable();
 
         lblNombreAeropuertoOrigen.setText("Nombre del aeropuerto origen:");
 
@@ -65,7 +65,7 @@ public class DistanciaGUI extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDatosDistancias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -73,7 +73,7 @@ public class DistanciaGUI extends javax.swing.JPanel {
 
             }
         ));
-        tblDatosDistancias.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblDatosDistancias);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -108,7 +108,7 @@ public class DistanciaGUI extends javax.swing.JPanel {
                         .addGap(72, 72, 72))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(tblDatosDistancias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -133,7 +133,7 @@ public class DistanciaGUI extends javax.swing.JPanel {
                     .addComponent(btnBorrar)
                     .addComponent(btnLimpiar))
                 .addGap(18, 18, 18)
-                .addComponent(tblDatosDistancias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -148,11 +148,11 @@ public class DistanciaGUI extends javax.swing.JPanel {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCantidadMillas;
     private javax.swing.JLabel lblNombreAeropuertoDestino;
     private javax.swing.JLabel lblNombreAeropuertoOrigen;
-    private javax.swing.JScrollPane tblDatosDistancias;
+    private javax.swing.JTable tblDatosDistancias;
     private javax.swing.JTextField tflCantidadMillas;
     private javax.swing.JTextField tflombreAeropuertoDestino;
     private javax.swing.JTextField tflombreAeropuertoOrigen;
@@ -174,10 +174,6 @@ public class DistanciaGUI extends javax.swing.JPanel {
         return btnLimpiar;
     }
 
-    public JTable getjTable1() {
-        return jTable1;
-    }
-
     public JLabel getLblCantidadMillas() {
         return lblCantidadMillas;
     }
@@ -188,10 +184,6 @@ public class DistanciaGUI extends javax.swing.JPanel {
 
     public JLabel getLblNombreAeropuertoOrigen() {
         return lblNombreAeropuertoOrigen;
-    }
-
-    public JScrollPane getTblDatosDistancias() {
-        return tblDatosDistancias;
     }
 
     public JTextField getTflCantidadMillas() {
@@ -211,5 +203,15 @@ public class DistanciaGUI extends javax.swing.JPanel {
         getTflombreAeropuertoDestino().setText("");
         getTflCantidadMillas().setText("");
     }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public JTable getTblDatosDistancias() {
+        return tblDatosDistancias;
+    }
+    
+
 
 }

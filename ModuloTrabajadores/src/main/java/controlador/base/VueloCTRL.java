@@ -1,7 +1,9 @@
 package controlador.base;
 
 import datos.vuelo.VueloDAOImpl;
+import modelo.base.Aerolinea;
 import modelo.base.Vuelo;
+import modelo.tablas.GeneradorTabla;
 import vista.vistas.datos.vuelo.VueloGUI;
 
 import javax.swing.*;
@@ -15,6 +17,9 @@ import static controlador.validaciones.ValidacionVuelo.validarVuelo;
 public class VueloCTRL implements ActionListener {
     private VueloGUI vueloGUI;
     private VueloDAOImpl vueloDAO = new VueloDAOImpl();
+    private final String[] TITULOS = {"codigoVuelo", "codigoAvion", "nombreAeropuertoOrigen", "nombreAeropuertoDestino",
+            "precioBoleto", "fechaSalida" };
+    private GeneradorTabla<Vuelo> generadorTabla;
 
     public VueloCTRL(VueloGUI vueloGUI) {
         this.vueloGUI = vueloGUI;
@@ -22,6 +27,8 @@ public class VueloCTRL implements ActionListener {
         vueloGUI.getBtnActualizar().addActionListener(this);
         vueloGUI.getBtnAgregar().addActionListener(this);
         vueloGUI.getBtnBorrar().addActionListener(this);
+
+        this.generadorTabla = new GeneradorTabla(this.vueloGUI.getjTable1(), TITULOS);
     }
 
     @Override
@@ -43,6 +50,7 @@ public class VueloCTRL implements ActionListener {
         parent.add(vueloGUI);
         parent.validate();
         vueloGUI.limpiarCampos();
+        generadorTabla.generar(vueloDAO.obtenerList());
     }
 
     private void agregar() {
@@ -54,6 +62,7 @@ public class VueloCTRL implements ActionListener {
                     LocalDate.parse(parametros[5], DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             VueloDAOImpl vueloDAO = new VueloDAOImpl();
             vueloDAO.crear(vuelo);
+            generadorTabla.generar(vueloDAO.obtenerList());
         } else {
             JOptionPane.showMessageDialog(vueloGUI, erroresVuelo, "Error en los datos ingresados",
                     JOptionPane.WARNING_MESSAGE);
@@ -61,11 +70,11 @@ public class VueloCTRL implements ActionListener {
     }
 
     private void actualizar() {
-
+        generadorTabla.generar(vueloDAO.obtenerList());
     }
 
     private void borrar() {
-
+        generadorTabla.generar(vueloDAO.obtenerList());
     }
 
     private String[] obtenerParametrosVuelo() {

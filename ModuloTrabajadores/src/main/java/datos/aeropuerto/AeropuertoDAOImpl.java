@@ -37,6 +37,7 @@ public class AeropuertoDAOImpl implements AeropuertoDAO {
 
     @Override
     public void actualizar(Aeropuerto aeropuerto) {
+        borrar(aeropuerto.getNombreAeropuerto());
         manejarArchivoBinario.crearArchivoBinario(PATH_AEROPUERTOS + aeropuerto.getNombreAeropuerto() + EXTENSION_AEROPUERTO, aeropuerto);
     }
 

@@ -4,6 +4,10 @@ import modelo.trabajadores.Administrador;
 import vista.ventanas.administrador.AdministradorGUI;
 import vista.vistas.datos.avion.AvionGUI;
 
+import java.io.File;
+
+import static controlador.archivos.ManejarArchivo.borrarDirectorio;
+
 /**
  * Clase principal desde donde se inicia la aplicacion.
  * @author abnerhl
@@ -15,6 +19,7 @@ public class Main {
      * @param args arreglo de argumentos de la consola.
      */
     public static void main(String[] args) {
+        borrarDirectorio(new File("/home/abnerhl/datos/"));
         String path = "src/main/resources/cargaObjetos.txt";
         CargarDatosDesdeArchivo cargarDatosDesdeArchivo = new CargarDatosDesdeArchivo();
         cargarDatosDesdeArchivo.cargarDatos(path);

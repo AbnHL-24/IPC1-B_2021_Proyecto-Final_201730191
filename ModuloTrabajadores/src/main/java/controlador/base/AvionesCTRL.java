@@ -1,7 +1,9 @@
 package controlador.base;
 
 import datos.avion.AvionDAOImpl;
+import modelo.base.Aerolinea;
 import modelo.base.Avion;
+import modelo.tablas.GeneradorTabla;
 import vista.vistas.datos.avion.AvionGUI;
 
 import javax.swing.*;
@@ -13,6 +15,9 @@ import static controlador.validaciones.ValidacionAvion.validarAvion;
 public class AvionesCTRL implements ActionListener {
     private AvionGUI avionGUI;
     private AvionDAOImpl avionDAO = new AvionDAOImpl();
+    private final String[] TITULOS = {"nombreAerolinea", "nombreAeropuertoActual", "codigoAvion",  "capacidadPAsajeros",
+            "capacidadGasolina", "consumoMilla"};
+    private GeneradorTabla<Avion> generadorTabla;
 
     public AvionesCTRL(AvionGUI avionGUI) {
         this.avionGUI = avionGUI;
@@ -20,6 +25,8 @@ public class AvionesCTRL implements ActionListener {
         this.avionGUI.getBtnAgregar().addActionListener(this);
         this.avionGUI.getBtnActualizar().addActionListener(this);
         this.avionGUI.getBtnBorrar().addActionListener(this);
+
+        this.generadorTabla = new GeneradorTabla(this.avionGUI.getTblDatosAviones(), TITULOS);
     }
 
     public void iniciar(JPanel parent) {
@@ -30,6 +37,7 @@ public class AvionesCTRL implements ActionListener {
         parent.add(avionGUI);
         parent.validate();
         avionGUI.limpiarCampos();
+        generadorTabla.generar(avionDAO.obtenerList());
     }
 
     private void agregar() {
@@ -40,6 +48,7 @@ public class AvionesCTRL implements ActionListener {
                     Integer.parseInt(parametros[4]), Integer.parseInt(parametros[5]));
             AvionDAOImpl avionDAO = new AvionDAOImpl();
             avionDAO.crear(avion);
+            generadorTabla.generar(avionDAO.obtenerList());
         } else {
             JOptionPane.showMessageDialog(avionGUI, erroresAvion, "Error en los datos ingresados",
                     JOptionPane.WARNING_MESSAGE);
@@ -48,11 +57,11 @@ public class AvionesCTRL implements ActionListener {
     }
 
     private void actualizar() {
-
+        generadorTabla.generar(avionDAO.obtenerList());
     }
 
     private void borrar() {
-
+        generadorTabla.generar(avionDAO.obtenerList());
     }
 
     @Override

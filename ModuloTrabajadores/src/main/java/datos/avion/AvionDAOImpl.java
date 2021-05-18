@@ -7,6 +7,7 @@ import modelo.base.Avion;
 
 import static controlador.archivos.ManejarArchivo.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,17 +40,24 @@ public class AvionDAOImpl implements AvionDAO{
 
     @Override
     public void actualizar(Avion avion) {
-
+        String codigoAvion = String.valueOf(avion.getCodigoAvion());
+        borrar(codigoAvion);
+        manejarArchivoBinario.crearArchivoBinario(PATH_AVION + codigoAvion + EXTENSION_AVION, avion);
     }
 
     @Override
     public void borrar(String id) {
-
+        borrarArchivo(PATH_AVION + id + EXTENSION_AVION);
     }
 
     @Override
     public List<Avion> obtenerList() {
-        return null;
+        List<String> fileNames = obtenerNombresArchivos(PATH_AVION);
+        List<Avion> users = new ArrayList();
+
+        fileNames.forEach(user -> users.add(obtenerObjecto(user)));
+
+        return users;
     }
 
     @Override

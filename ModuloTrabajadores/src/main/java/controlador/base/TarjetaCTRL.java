@@ -1,7 +1,9 @@
 package controlador.base;
 
 import datos.tarjeta.TarjetaDAOImpl;
+import modelo.base.Aerolinea;
 import modelo.base.Tarjeta;
+import modelo.tablas.GeneradorTabla;
 import vista.vistas.datos.tarjeta.TarjetaGUI;
 
 import javax.swing.*;
@@ -13,6 +15,9 @@ import static controlador.validaciones.ValidacionTarjeta.validarTarjeta;
 public class TarjetaCTRL implements ActionListener {
     private TarjetaGUI tarjetaGUI;
     private TarjetaDAOImpl tarjetaDAO = new TarjetaDAOImpl();
+    private final String[] TITULOS = {"no_Tarjeta", "no_Pasaporte", "dineroActual",
+            "codigoCV"};
+    private GeneradorTabla<Tarjeta> generadorTabla;
 
     public TarjetaCTRL(TarjetaGUI tarjetaGUI) {
         this.tarjetaGUI = tarjetaGUI;
@@ -20,6 +25,8 @@ public class TarjetaCTRL implements ActionListener {
         this.tarjetaGUI.getBtnAgreggar().addActionListener(this);
         this.tarjetaGUI.getBtnActualizar().addActionListener(this);
         this.tarjetaGUI.getBtnBorrar().addActionListener(this);
+
+        this.generadorTabla = new GeneradorTabla<>(this.tarjetaGUI.getTblDatosTarjeta(), TITULOS);
     }
 
     @Override
@@ -41,6 +48,7 @@ public class TarjetaCTRL implements ActionListener {
         parent.add(tarjetaGUI);
         parent.validate();
         tarjetaGUI.limpiarCampos();
+        generadorTabla.generar(tarjetaDAO.obtenerList());
     }
 
     private void agregar() {
@@ -51,6 +59,7 @@ public class TarjetaCTRL implements ActionListener {
                     Integer.parseInt(parametros[2]), Integer.parseInt(parametros[3]));
             TarjetaDAOImpl tarjetaDAO = new TarjetaDAOImpl();
             tarjetaDAO.crear(tarjeta);
+            generadorTabla.generar(tarjetaDAO.obtenerList());
         } else {
             JOptionPane.showMessageDialog(tarjetaGUI, erroresTarjeta, "Error en los datos ingresados",
                     JOptionPane.WARNING_MESSAGE);
@@ -58,11 +67,11 @@ public class TarjetaCTRL implements ActionListener {
     }
 
     private void actualizar() {
-
+        generadorTabla.generar(tarjetaDAO.obtenerList());
     }
 
     private void borrar() {
-
+        generadorTabla.generar(tarjetaDAO.obtenerList());
     }
 
     private String[] obtenerParametrosTarjeta() {

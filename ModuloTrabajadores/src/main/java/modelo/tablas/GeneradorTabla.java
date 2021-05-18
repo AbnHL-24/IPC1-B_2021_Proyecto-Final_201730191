@@ -27,4 +27,5 @@ public class GeneradorTabla<T extends Arrayable> {
     public void limpiar() {
         tabla.setModel(new DefaultTableModel());
     }
+
 }

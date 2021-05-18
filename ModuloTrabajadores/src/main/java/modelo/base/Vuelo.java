@@ -99,6 +99,6 @@ public class Vuelo implements Serializable, Arrayable {
     @Override
     public String[] toArray() {
         return new String[] {codigoVuelo, codigoAvion, nombreAeropuertoOrigen, nombreAeropuertoDestino,
-        String.valueOf(precioBoleto), String.valueOf(fechaSalida) };
+        String.valueOf(precioBoleto), String.valueOf(fechaSalida)};
     }
 }

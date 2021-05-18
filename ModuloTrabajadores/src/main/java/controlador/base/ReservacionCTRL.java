@@ -1,7 +1,9 @@
 package controlador.base;
 
 import datos.reservacion.ReservacionDAOImpl;
+import modelo.base.Aerolinea;
 import modelo.base.Reservacion;
+import modelo.tablas.GeneradorTabla;
 import vista.vistas.datos.reservacion.ReservacionGUI;
 
 import javax.swing.*;
@@ -13,6 +15,9 @@ import static controlador.validaciones.ValidacionReservacion.validarReservacion;
 public class ReservacionCTRL implements ActionListener {
     private ReservacionGUI reservacionGUI;
     private ReservacionDAOImpl reservacionDAO = new ReservacionDAOImpl();
+    private final String[] TITULOS = {"NO_Pasaporte", "codigoVuelo", "NO_Tarjeta",
+            "NO_Asiento"};
+    private GeneradorTabla<Reservacion> generadorTabla;
 
     public ReservacionCTRL(ReservacionGUI reservacionGUI) {
         this.reservacionGUI = reservacionGUI;
@@ -20,6 +25,8 @@ public class ReservacionCTRL implements ActionListener {
         this.reservacionGUI.getBtnAgregar().addActionListener(this);
         this.reservacionGUI.getBtnActualizar().addActionListener(this);
         this.reservacionGUI.getBtnBorrar().addActionListener(this);
+
+        this.generadorTabla = new GeneradorTabla<>(this.reservacionGUI.getjTable1(), TITULOS);
     }
 
     @Override
@@ -41,6 +48,7 @@ public class ReservacionCTRL implements ActionListener {
         parent.add(reservacionGUI);
         parent.validate();
         reservacionGUI.limpiarCampos();
+        generadorTabla.generar(reservacionDAO.obtenerList());
     }
 
     private void agregar() {
@@ -51,6 +59,7 @@ public class ReservacionCTRL implements ActionListener {
                     Long.parseLong(parametros[2]), Integer.parseInt(parametros[3]));
             ReservacionDAOImpl reservacionDAO= new ReservacionDAOImpl();
             reservacionDAO.crear(reservacion);
+            generadorTabla.generar(reservacionDAO.obtenerList());
         } else {
             JOptionPane.showMessageDialog(reservacionGUI, erroresReservacion, "Error en los datos ingresados",
                     JOptionPane.WARNING_MESSAGE);
@@ -58,11 +67,11 @@ public class ReservacionCTRL implements ActionListener {
     }
 
     private void actualizar() {
-
+        generadorTabla.generar(reservacionDAO.obtenerList());
     }
 
     private void borrar() {
-
+        generadorTabla.generar(reservacionDAO.obtenerList());
     }
 
 

@@ -1,10 +1,12 @@
 package datos.tarjeta;
 
 import controlador.archivos.ManejarArchivoBinario;
+import modelo.base.Aeropuerto;
 import modelo.base.Tarjeta;
 
 import static controlador.archivos.ManejarArchivo.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,7 +30,7 @@ public class TarjetaDAOImpl implements TarjetaDAO{
     @Override
     public Tarjeta obtenerObjecto(String id) {
         if (id.endsWith(EXTENSION_TARJETA)) {
-            return manejarArchivoBinario.leerArchivoBinario(EXTENSION_TARJETA + id);
+            return manejarArchivoBinario.leerArchivoBinario(PATH_TARJETA + id);
         } else {
             return manejarArchivoBinario.leerArchivoBinario(PATH_TARJETA + id + EXTENSION_TARJETA);
         }
@@ -36,17 +38,24 @@ public class TarjetaDAOImpl implements TarjetaDAO{
 
     @Override
     public void actualizar(Tarjeta tarjeta) {
-
+        String noTarjeta = String.valueOf(tarjeta.getNo_Tarjeta());
+        borrar(noTarjeta);
+        manejarArchivoBinario.crearArchivoBinario(PATH_TARJETA + noTarjeta + EXTENSION_TARJETA, tarjeta);
     }
 
     @Override
     public void borrar(String id) {
-
+        borrarArchivo(PATH_TARJETA + id + EXTENSION_TARJETA);
     }
 
     @Override
     public List<Tarjeta> obtenerList() {
-        return null;
+        List<String> fileNames = obtenerNombresArchivos(PATH_TARJETA);
+        List<Tarjeta> users = new ArrayList();
+
+        fileNames.forEach(user -> users.add(obtenerObjecto(user)));
+
+        return users;
     }
 
     @Override

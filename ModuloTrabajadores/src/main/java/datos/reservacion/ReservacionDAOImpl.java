@@ -4,10 +4,10 @@ import controlador.archivos.ManejarArchivoBinario;
 import modelo.base.Aeropuerto;
 import modelo.base.Reservacion;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static controlador.archivos.ManejarArchivo.crearDirectorio;
-import static controlador.archivos.ManejarArchivo.verificarArchivo;
+import static controlador.archivos.ManejarArchivo.*;
 
 public class ReservacionDAOImpl implements ReservacionDAO{
     private final String HOME_USUARIO = System.getProperty("user.home");
@@ -33,17 +33,24 @@ public class ReservacionDAOImpl implements ReservacionDAO{
 
     @Override
     public void actualizar(Reservacion reservacion) {
-
+        String id = String.valueOf(reservacion.getCodigoVuelo() + " + " +reservacion.getNO_Asiento());
+        borrar(id);
+        manejarArchivoBinario.crearArchivoBinario(PATH_RESERVACION + id + EXTENSION_RESERVACION, reservacion);
     }
 
     @Override
     public void borrar(String id) {
-
+        borrarArchivo(PATH_RESERVACION + id + EXTENSION_RESERVACION);
     }
 
     @Override
     public List<Reservacion> obtenerList() {
-        return null;
+        List<String> fileNames = obtenerNombresArchivos(PATH_RESERVACION);
+        List<Reservacion> users = new ArrayList();
+
+        fileNames.forEach(user -> users.add(obtenerObjecto(user)));
+
+        return users;
     }
 
     @Override

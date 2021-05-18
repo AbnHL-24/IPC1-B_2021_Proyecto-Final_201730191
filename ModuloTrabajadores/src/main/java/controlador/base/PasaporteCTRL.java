@@ -4,6 +4,7 @@ import datos.pasaporte.PasaporteDAOImpl;
 import modelo.base.Pasaporte;
 import modelo.base.soporte.EstadoCivil;
 import modelo.base.soporte.Sexo;
+import modelo.tablas.GeneradorTabla;
 import vista.vistas.datos.pasaporte.PasaporteGUI;
 
 import javax.swing.*;
@@ -17,6 +18,10 @@ import static controlador.validaciones.ValidacionPasaporte.validarPasaporte;
 public class PasaporteCTRL implements ActionListener {
     private PasaporteGUI pasaporteGUI;
     private PasaporteDAOImpl pasaporteDAO = new PasaporteDAOImpl();
+    private final String[] TITULOS = {"noPasaporte", "contraseña", "fechaDeNacimiento", "nacionalidad",
+            "estadoCivil", "nombre", "apellidos", "sexo", "fechaDeVencimiento",
+            "fechaEmision", "paisActual", "millasRecorridas"};
+    private GeneradorTabla<Pasaporte> generadorTabla;
 
     public PasaporteCTRL(PasaporteGUI pasaporteGUI) {
         this.pasaporteGUI = pasaporteGUI;
@@ -24,6 +29,8 @@ public class PasaporteCTRL implements ActionListener {
         this.pasaporteGUI.getBtnAgregar().addActionListener(this);
         this.pasaporteGUI.getBtnActualizar().addActionListener(this);
         this.pasaporteGUI.getBtnBorrar().addActionListener(this);
+
+        this.generadorTabla = new GeneradorTabla<>(this.pasaporteGUI.getjTable1(), TITULOS);
     }
 
     @Override
@@ -45,6 +52,7 @@ public class PasaporteCTRL implements ActionListener {
         parent.add(pasaporteGUI);
         parent.validate();
         pasaporteGUI.limpiarCampos();
+        generadorTabla.generar(pasaporteDAO.obtenerList());
     }
 
     private void agregar() {
@@ -59,6 +67,7 @@ public class PasaporteCTRL implements ActionListener {
                     parametros[10], Integer.parseInt(parametros[11]));
             PasaporteDAOImpl pasaporteDAO = new PasaporteDAOImpl();
             pasaporteDAO.crear(pasaporte);
+            generadorTabla.generar(pasaporteDAO.obtenerList());
         } else {
             JOptionPane.showMessageDialog(pasaporteGUI, erroresPasaporte, "Error en los datos ingresados",
                     JOptionPane.WARNING_MESSAGE);
@@ -66,11 +75,11 @@ public class PasaporteCTRL implements ActionListener {
     }
 
     private void actualizar() {
-
+        generadorTabla.generar(pasaporteDAO.obtenerList());
     }
 
     private void borrar() {
-
+        generadorTabla.generar(pasaporteDAO.obtenerList());
     }
 
 

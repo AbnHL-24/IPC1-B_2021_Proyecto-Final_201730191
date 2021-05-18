@@ -65,6 +65,7 @@ public class Reservacion implements Serializable, Arrayable {
 
     @Override
     public String[] toArray() {
-        return new String[] {String.valueOf(NO_Pasaporte), String.valueOf(codigoVuelo), String.valueOf(NO_Tarjeta), String.valueOf(NO_Asiento)};
+        return new String[] {String.valueOf(NO_Pasaporte), String.valueOf(codigoVuelo), String.valueOf(NO_Tarjeta),
+                String.valueOf(NO_Asiento)};
     }
 }

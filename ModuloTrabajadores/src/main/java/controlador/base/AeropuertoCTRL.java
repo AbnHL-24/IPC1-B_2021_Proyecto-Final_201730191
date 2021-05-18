@@ -3,7 +3,9 @@ package controlador.base;
 import controlador.validaciones.ValidacionAeropuerto;
 import datos.aeropuerto.AeropuertoDAO;
 import datos.aeropuerto.AeropuertoDAOImpl;
+import modelo.base.Aerolinea;
 import modelo.base.Aeropuerto;
+import modelo.tablas.GeneradorTabla;
 import vista.ventanas.administrador.AdministradorGUI;
 import vista.vistas.datos.aeropuerto.AeropuertoGUI;
 
@@ -16,6 +18,8 @@ import static controlador.validaciones.ValidacionAeropuerto.validarAeropuerto;
 public class AeropuertoCTRL implements ActionListener {
     private AeropuertoGUI aeropuertoGUI;
     private AeropuertoDAOImpl aeropuertoDAO = new AeropuertoDAOImpl();
+    private final String[] TITULOS = {"nombreAeropuerto", "ciudad", "pais"};
+    private GeneradorTabla<Aeropuerto> generadorTabla;
 
     public AeropuertoCTRL(AeropuertoGUI aeropuertoGUI) {
         this.aeropuertoGUI = aeropuertoGUI;
@@ -23,6 +27,8 @@ public class AeropuertoCTRL implements ActionListener {
         this.aeropuertoGUI.getBtnAgregar().addActionListener(this);
         this.aeropuertoGUI.getBtnActualizar().addActionListener(this);
         this.aeropuertoGUI.getBtnBorrar().addActionListener(this);
+
+        this.generadorTabla = new GeneradorTabla(this.aeropuertoGUI.getTblDatosAeropuertos(), TITULOS);
     }
 
     public void iniciar(JPanel parent) {
@@ -33,6 +39,7 @@ public class AeropuertoCTRL implements ActionListener {
         parent.add(aeropuertoGUI);
         parent.validate();
         aeropuertoGUI.limpiarCampos();
+        generadorTabla.generar(aeropuertoDAO.obtenerList());
     }
 
     private void agregar() {
@@ -42,6 +49,7 @@ public class AeropuertoCTRL implements ActionListener {
             Aeropuerto aeropuerto = new Aeropuerto(parametros[0], parametros[1], parametros[2]);
             AeropuertoDAOImpl aeropuertoDAO = new AeropuertoDAOImpl();
             aeropuertoDAO.crear(aeropuerto);
+            generadorTabla.generar(aeropuertoDAO.obtenerList());
         }  else {
             JOptionPane.showMessageDialog(aeropuertoGUI, erroresAeropuerto, "Error en los datos ingresados",
                     JOptionPane.WARNING_MESSAGE);
@@ -57,13 +65,11 @@ public class AeropuertoCTRL implements ActionListener {
     }
 
     private void actualizar() {
-        Aeropuerto aeropuertoTMP = aeropuertoDAO.obtenerObjecto(aeropuertoGUI.getTflNombreAeropuerto().getText());
-        //if (aeropuertoTMP.getNombreAeropuerto().equals())
-
+        generadorTabla.generar(aeropuertoDAO.obtenerList());
     }
 
     private void borrar() {
-
+        generadorTabla.generar(aeropuertoDAO.obtenerList());
     }
 
     @Override

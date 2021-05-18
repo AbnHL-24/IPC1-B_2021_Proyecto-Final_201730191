@@ -2,6 +2,7 @@ package controlador.base;
 
 import datos.renovacionpasaporte.RenovacionPasaporteDAOImpl;
 import modelo.base.RenovacionPasaporte;
+import modelo.tablas.GeneradorTabla;
 import vista.vistas.datos.renovacionpasaporte.RenovacionPasaporteGUI;
 
 import javax.swing.*;
@@ -15,6 +16,8 @@ import static controlador.validaciones.ValidacionRanovacionPasaporte.validarReno
 public class RenovacionPasaporteCTRL implements ActionListener {
     private RenovacionPasaporteGUI renovacionPasaporteGUI;
     private RenovacionPasaporteDAOImpl renovacionPasaporteDAO = new RenovacionPasaporteDAOImpl();
+    private final String[] TITULOS = {"NO_Pasaporte", "fechaNuevoVencimiento"};
+    private GeneradorTabla<RenovacionPasaporte> generadorTabla;
 
     public RenovacionPasaporteCTRL(RenovacionPasaporteGUI renovacionPasaporteGUI) {
         this.renovacionPasaporteGUI = renovacionPasaporteGUI;
@@ -22,6 +25,8 @@ public class RenovacionPasaporteCTRL implements ActionListener {
         this.renovacionPasaporteGUI.getBtnAgregar().addActionListener(this);
         this.renovacionPasaporteGUI.getBtnActualizar().addActionListener(this);
         this.renovacionPasaporteGUI.getBtnBorrar().addActionListener(this);
+
+        this.generadorTabla = new GeneradorTabla<>(this.renovacionPasaporteGUI.getjTable1(), TITULOS);
     }
 
     @Override
@@ -43,6 +48,7 @@ public class RenovacionPasaporteCTRL implements ActionListener {
         parent.add(renovacionPasaporteGUI);
         parent.validate();
         renovacionPasaporteGUI.limpiarCampos();
+        generadorTabla.generar(renovacionPasaporteDAO.obtenerList());
     }
 
     private void agregar() {
@@ -53,6 +59,7 @@ public class RenovacionPasaporteCTRL implements ActionListener {
                     LocalDate.parse(parametros[1], DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             RenovacionPasaporteDAOImpl renovacionPasaporteDAO =  new RenovacionPasaporteDAOImpl();
             renovacionPasaporteDAO.crear(renovacionPasaporte);
+            generadorTabla.generar(renovacionPasaporteDAO.obtenerList());
         } else {
             JOptionPane.showMessageDialog(renovacionPasaporteGUI, erroresRenovacionPasaporte,
                     "Error en los datos ingresados", JOptionPane.WARNING_MESSAGE);
@@ -60,11 +67,11 @@ public class RenovacionPasaporteCTRL implements ActionListener {
     }
 
     private void actualizar() {
-
+        generadorTabla.generar(renovacionPasaporteDAO.obtenerList());
     }
 
     private void borrar() {
-
+        generadorTabla.generar(renovacionPasaporteDAO.obtenerList());
     }
 
     private String[] obtenerParametrosRenovacionPasaporte() {

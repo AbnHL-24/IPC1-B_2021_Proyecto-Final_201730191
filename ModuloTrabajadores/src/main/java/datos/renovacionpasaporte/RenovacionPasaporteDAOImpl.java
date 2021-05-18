@@ -1,10 +1,12 @@
 package datos.renovacionpasaporte;
 
 import controlador.archivos.ManejarArchivoBinario;
+import modelo.base.Aeropuerto;
 import modelo.base.RenovacionPasaporte;
 
 import static controlador.archivos.ManejarArchivo.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +24,8 @@ public class RenovacionPasaporteDAOImpl implements RenovacionPasaporteDAO{
     public void crear(RenovacionPasaporte renovacionPasaporte) {
         crearDirectorio(PATH_RENOVACIONPASAPORTE);
         String noPasaporte = String.valueOf(renovacionPasaporte.getNO_Pasaporte());
-        manejarArchivoBinario.crearArchivoBinario(PATH_RENOVACIONPASAPORTE + noPasaporte + EXTENSION_RENOVACIONPASAPORTE, renovacionPasaporte);
+        manejarArchivoBinario.crearArchivoBinario(PATH_RENOVACIONPASAPORTE + noPasaporte + EXTENSION_RENOVACIONPASAPORTE,
+                renovacionPasaporte);
     }
 
     @Override
@@ -36,17 +39,25 @@ public class RenovacionPasaporteDAOImpl implements RenovacionPasaporteDAO{
 
     @Override
     public void actualizar(RenovacionPasaporte renovacionPasaporte) {
-
+        String noPasaporte = String.valueOf(renovacionPasaporte.getNO_Pasaporte());
+        borrar(noPasaporte);
+        manejarArchivoBinario.crearArchivoBinario(PATH_RENOVACIONPASAPORTE + noPasaporte + EXTENSION_RENOVACIONPASAPORTE,
+                renovacionPasaporte);
     }
 
     @Override
     public void borrar(String id) {
-
+        borrarArchivo(PATH_RENOVACIONPASAPORTE + id + EXTENSION_RENOVACIONPASAPORTE);
     }
 
     @Override
     public List<RenovacionPasaporte> obtenerList() {
-        return null;
+        List<String> fileNames = obtenerNombresArchivos(PATH_RENOVACIONPASAPORTE);
+        List<RenovacionPasaporte> users = new ArrayList();
+
+        fileNames.forEach(user -> users.add(obtenerObjecto(user)));
+
+        return users;
     }
 
     @Override
