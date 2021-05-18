@@ -13,11 +13,9 @@ import modelo.base.*;
 import modelo.base.soporte.EstadoCivil;
 import modelo.base.soporte.Sexo;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Locale;
 
 import static controlador.validaciones.ValidacionAerolinea.validarAerolinea;
 import static controlador.validaciones.ValidacionAeropuerto.validarAeropuerto;
@@ -41,15 +39,15 @@ public class GenerarObjetos {
 
     public void generarReservacion(String[] parametros, int indice) {
         if (parametros.length ==  4) {
-            String erroresTarjeta= validarReservacion(parametros);
-            if ("".equals(erroresTarjeta)) {
+            String erroresReservacion= validarReservacion(parametros);
+            if ("".equals(erroresReservacion)) {
                 Reservacion reservacion = new Reservacion(Long.parseLong(parametros[0]), Integer.parseInt(parametros[1]),
                         Long.parseLong(parametros[2]), Integer.parseInt(parametros[3]));
                 ReservacionDAOImpl reservacionDAO= new ReservacionDAOImpl();
                 reservacionDAO.crear(reservacion);
                 resutadosDeCargaDeDatos.add(lineaMasIndice(indice) + "Reservacion cargada exitosamente");
             } else {
-                resutadosDeCargaDeDatos.add(lineaMasIndice(indice) + erroresTarjeta);
+                resutadosDeCargaDeDatos.add(lineaMasIndice(indice) + erroresReservacion);
             }
         } else {
             resutadosDeCargaDeDatos.add(lineaMasIndice(indice) + ERROR_DE_CANTIDAD_DE_PARAMETROS);
@@ -58,15 +56,15 @@ public class GenerarObjetos {
 
     public void generarRenovacionPasaporte(String[] parametros, int indice) {
         if (parametros.length ==  2) {
-            String erroresTarjeta = validarRenovacionPasaporte(parametros);
-            if ("".equals(erroresTarjeta)) {
+            String erroresRenovacionPasaporte = validarRenovacionPasaporte(parametros);
+            if ("".equals(erroresRenovacionPasaporte)) {
                 RenovacionPasaporte renovacionPasaporte = new RenovacionPasaporte(Long.parseLong(parametros[0]),
                         LocalDate.parse(parametros[1], DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                 RenovacionPasaporteDAOImpl renovacionPasaporteDAO =  new RenovacionPasaporteDAOImpl();
                 renovacionPasaporteDAO.crear(renovacionPasaporte);
                 resutadosDeCargaDeDatos.add(lineaMasIndice(indice) + "Renovacion de pasaporte cargada exitosamente");
             } else {
-                resutadosDeCargaDeDatos.add(lineaMasIndice(indice) + erroresTarjeta);
+                resutadosDeCargaDeDatos.add(lineaMasIndice(indice) + erroresRenovacionPasaporte);
             }
         } else {
             resutadosDeCargaDeDatos.add(lineaMasIndice(indice) + ERROR_DE_CANTIDAD_DE_PARAMETROS);

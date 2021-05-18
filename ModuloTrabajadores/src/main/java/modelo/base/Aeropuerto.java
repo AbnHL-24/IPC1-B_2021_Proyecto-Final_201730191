@@ -17,6 +17,7 @@ public class Aeropuerto implements Serializable {
     private String nombreAeropuerto;
     private String ciudad;
     private String pais;
+    private int cantidadAviones;
 
     /**
      * Constructor que solicita el nombre, la ciudad y el pais del aeropuerto.
@@ -28,6 +29,7 @@ public class Aeropuerto implements Serializable {
         this.nombreAeropuerto = nombreAeropuerto;
         this.ciudad = ciudad;
         this.pais = pais;
+        this.cantidadAviones = 0;
     }
 
     /**
@@ -72,5 +74,13 @@ public class Aeropuerto implements Serializable {
 
     public void setPais(String pais) {
         this.pais = pais;
+    }
+
+    public int getCantidadAviones() {
+        return cantidadAviones;
+    }
+
+    public void setCantidadAviones(int cantidadAviones) {
+        this.cantidadAviones = cantidadAviones;
     }
 }
