@@ -4,6 +4,7 @@ import controlador.validaciones.ValidacionAeropuerto;
 import datos.aeropuerto.AeropuertoDAO;
 import datos.aeropuerto.AeropuertoDAOImpl;
 import modelo.base.Aeropuerto;
+import vista.ventanas.administrador.AdministradorGUI;
 import vista.vistas.datos.aeropuerto.AeropuertoGUI;
 
 import javax.swing.*;
@@ -22,6 +23,16 @@ public class AeropuertoCTRL implements ActionListener {
         this.aeropuertoGUI.getBtnAgregar().addActionListener(this);
         this.aeropuertoGUI.getBtnActualizar().addActionListener(this);
         this.aeropuertoGUI.getBtnBorrar().addActionListener(this);
+    }
+
+    public void iniciar(JPanel parent) {
+        parent.removeAll();
+        parent.repaint();
+        aeropuertoGUI.setSize(parent.getSize());
+        aeropuertoGUI.setVisible(true);
+        parent.add(aeropuertoGUI);
+        parent.validate();
+        aeropuertoGUI.limpiarCampos();
     }
 
     private void agregar() {

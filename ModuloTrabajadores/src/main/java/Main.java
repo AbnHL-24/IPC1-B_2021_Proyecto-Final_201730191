@@ -1,4 +1,7 @@
 import controlador.archivos.CargarDatosDesdeArchivo;
+import controlador.interfaz.AdministradorCTRL;
+import modelo.trabajadores.Administrador;
+import vista.ventanas.administrador.AdministradorGUI;
 import vista.vistas.datos.avion.AvionGUI;
 
 /**
@@ -19,5 +22,9 @@ public class Main {
         for (int i = 0; i < cargarDatosDesdeArchivo.obtenerResultados().size(); i++) {
             System.out.println(cargarDatosDesdeArchivo.obtenerResultados().get(i));
         }*/
+        AdministradorGUI administradorGUI = new AdministradorGUI();
+        AdministradorCTRL administradorCTRL = new AdministradorCTRL(administradorGUI);
+        administradorCTRL.iniciar();
+
     }
 }

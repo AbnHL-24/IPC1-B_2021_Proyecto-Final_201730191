@@ -33,6 +33,16 @@ public class TarjetaCTRL implements ActionListener {
         }
     }
 
+    public void iniciar(JPanel parent) {
+        parent.removeAll();
+        parent.repaint();
+        tarjetaGUI.setSize(parent.getSize());
+        tarjetaGUI.setVisible(true);
+        parent.add(tarjetaGUI);
+        parent.validate();
+        tarjetaGUI.limpiarCampos();
+    }
+
     private void agregar() {
         String[] parametros = obtenerParametrosTarjeta();
         String erroresTarjeta= validarTarjeta(parametros);

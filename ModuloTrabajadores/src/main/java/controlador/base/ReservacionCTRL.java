@@ -33,6 +33,16 @@ public class ReservacionCTRL implements ActionListener {
         }
     }
 
+    public void iniciar(JPanel parent) {
+        parent.removeAll();
+        parent.repaint();
+        reservacionGUI.setSize(parent.getSize());
+        reservacionGUI.setVisible(true);
+        parent.add(reservacionGUI);
+        parent.validate();
+        reservacionGUI.limpiarCampos();
+    }
+
     private void agregar() {
         String[] parametros = obtenerParametrosReservacion();
         String erroresReservacion= validarReservacion(parametros);

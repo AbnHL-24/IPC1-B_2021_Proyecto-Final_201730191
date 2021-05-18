@@ -35,6 +35,16 @@ public class RenovacionPasaporteCTRL implements ActionListener {
         }
     }
 
+    public void iniciar(JPanel parent) {
+        parent.removeAll();
+        parent.repaint();
+        renovacionPasaporteGUI.setSize(parent.getSize());
+        renovacionPasaporteGUI.setVisible(true);
+        parent.add(renovacionPasaporteGUI);
+        parent.validate();
+        renovacionPasaporteGUI.limpiarCampos();
+    }
+
     private void agregar() {
         String[] parametros = obtenerParametrosRenovacionPasaporte();
         String erroresRenovacionPasaporte = validarRenovacionPasaporte(parametros);

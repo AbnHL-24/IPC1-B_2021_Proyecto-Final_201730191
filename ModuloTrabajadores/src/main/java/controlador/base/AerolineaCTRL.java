@@ -23,6 +23,16 @@ public class AerolineaCTRL implements ActionListener {
         aerolineaGUI.getBtnBorrar().addActionListener(this);
     }
 
+    public void iniciar(JPanel parent) {
+        parent.removeAll();
+        parent.repaint();
+        aerolineaGUI.setSize(parent.getSize());
+        aerolineaGUI.setVisible(true);
+        parent.add(aerolineaGUI);
+        parent.validate();
+        aerolineaGUI.limpiarCampos();
+    }
+
     private void agregar() {
         String[] parametros = obtenerParametrosAerolinea();
         String erroresAerolinea = validarAerolinea(parametros);

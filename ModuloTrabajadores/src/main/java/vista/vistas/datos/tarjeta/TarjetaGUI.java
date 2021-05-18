@@ -145,7 +145,7 @@ public class TarjetaGUI extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        limparCampos();
+        limpiarCampos();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
 
@@ -222,7 +222,7 @@ public class TarjetaGUI extends javax.swing.JPanel {
         return tflNoTarjeta;
     }
 
-    public void limparCampos() {
+    public void limpiarCampos() {
         getTflNoTarjeta().setText("");
         getTflNoPasaporte().setText("");
         getTflDineroActual().setText("");

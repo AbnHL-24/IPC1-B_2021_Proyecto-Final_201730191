@@ -33,6 +33,16 @@ public class DistanciaCTRL implements ActionListener {
         }
     }
 
+    public void iniciar(JPanel parent) {
+        parent.removeAll();
+        parent.repaint();
+        distanciaGUI.setSize(parent.getSize());
+        distanciaGUI.setVisible(true);
+        parent.add(distanciaGUI);
+        parent.validate();
+        distanciaGUI.limpiarCampos();
+    }
+
     private void agregar() {
         String[] parametros = obtenerParametrosDistancia();
         String erroresDistancia = validarDistancia(parametros);

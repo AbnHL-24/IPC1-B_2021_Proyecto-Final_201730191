@@ -35,6 +35,16 @@ public class VueloCTRL implements ActionListener {
         }
     }
 
+    public void iniciar(JPanel parent) {
+        parent.removeAll();
+        parent.repaint();
+        vueloGUI.setSize(parent.getSize());
+        vueloGUI.setVisible(true);
+        parent.add(vueloGUI);
+        parent.validate();
+        vueloGUI.limpiarCampos();
+    }
+
     private void agregar() {
         String[] parametros = obtenerParametrosVuelo();
         String erroresVuelo = validarVuelo(parametros);

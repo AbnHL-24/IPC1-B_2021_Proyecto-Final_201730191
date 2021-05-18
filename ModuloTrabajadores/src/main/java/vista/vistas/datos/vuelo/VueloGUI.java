@@ -171,7 +171,7 @@ public class VueloGUI extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        limparCampos();
+        limpiarCampos();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
 
@@ -268,7 +268,7 @@ public class VueloGUI extends javax.swing.JPanel {
         return tflPrecioBoleto;
     }
 
-    public void limparCampos() {
+    public void limpiarCampos() {
         getTflCodigoVuelo().setText("");
         getTflCodigoAvion().setText("");
         getTflNombreAeropuertoDestino().setText("");

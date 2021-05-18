@@ -37,6 +37,16 @@ public class PasaporteCTRL implements ActionListener {
         }
     }
 
+    public void iniciar(JPanel parent) {
+        parent.removeAll();
+        parent.repaint();
+        pasaporteGUI.setSize(parent.getSize());
+        pasaporteGUI.setVisible(true);
+        parent.add(pasaporteGUI);
+        parent.validate();
+        pasaporteGUI.limpiarCampos();
+    }
+
     private void agregar() {
         String[] parametros = obtenerParametrosPasaporte();
         String erroresPasaporte = validarPasaporte(parametros);

@@ -22,6 +22,16 @@ public class AvionesCTRL implements ActionListener {
         this.avionGUI.getBtnBorrar().addActionListener(this);
     }
 
+    public void iniciar(JPanel parent) {
+        parent.removeAll();
+        parent.repaint();
+        avionGUI.setSize(parent.getSize());
+        avionGUI.setVisible(true);
+        parent.add(avionGUI);
+        parent.validate();
+        avionGUI.limpiarCampos();
+    }
+
     private void agregar() {
         String[] parametros = obtenerParametrosAvion();
         String erroresAvion = validarAvion(parametros);
