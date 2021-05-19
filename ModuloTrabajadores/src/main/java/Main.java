@@ -24,8 +24,8 @@ public class Main {
     public static void main(String[] args) {
         borrarDirectorio(new File("/home/abnerhl/datos/"));
         String path = "src/main/resources/cargaObjetos.txt";
-        //CargarDatosDesdeArchivo cargarDatosDesdeArchivo = new CargarDatosDesdeArchivo();
-        //cargarDatosDesdeArchivo.cargarDatos(path);
+        CargarDatosDesdeArchivo cargarDatosDesdeArchivo = new CargarDatosDesdeArchivo();
+        cargarDatosDesdeArchivo.cargarDatos(path);
         /* pruebas
         for (int i = 0; i < cargarDatosDesdeArchivo.obtenerResultados().size(); i++) {
             System.out.println(cargarDatosDesdeArchivo.obtenerResultados().get(i));

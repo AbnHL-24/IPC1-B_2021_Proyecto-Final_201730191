@@ -1,6 +1,8 @@
 package controlador.interfaz;
 
 import controlador.base.*;
+import controlador.reportes.PasajeroRCTRL;
+import vista.informes.administrador.pasajero.PasajeroRGUI;
 import vista.ventanas.administrador.AdministradorGUI;
 import vista.vistas.cargainformacion.CargarInformacion;
 import vista.vistas.datos.aerolinea.AerolineaGUI;
@@ -34,6 +36,11 @@ public class AdministradorCTRL implements ActionListener {
         this.administradorGUI.getMnVuelos().addActionListener(this);
         this.administradorGUI.getMnUsuarios().addActionListener(this);
         this.administradorGUI.getMnCargarArchivo().addActionListener(this);
+        this.administradorGUI.getMnReportePasajero().addActionListener(this);
+        this.administradorGUI.getMnReporteAerolinea().addActionListener(this);
+        this.administradorGUI.getMnReporteVuelo().addActionListener(this);
+        this.administradorGUI.getMnReporteAvion().addActionListener(this);
+        this.administradorGUI.getMnReporteAeropuerto().addActionListener(this);
 
     }
 
@@ -89,6 +96,11 @@ public class AdministradorCTRL implements ActionListener {
             CargarInformacion cargarInformacion = new CargarInformacion();
             CargarArchivoCTRL cargarArchivoCTRL = new CargarArchivoCTRL(cargarInformacion);
             cargarArchivoCTRL.iniciar(administradorGUI.getPnlBase());
+        } else if (e.getSource() == administradorGUI.getMnReportePasajero()) {
+            PasajeroRGUI pasajeroRGUI = new PasajeroRGUI();
+            PasajeroRCTRL pasajeroRCTRL = new PasajeroRCTRL(pasajeroRGUI);
+            pasajeroRCTRL.iniciar(administradorGUI.getPnlBase());
+
         }
     }
 }

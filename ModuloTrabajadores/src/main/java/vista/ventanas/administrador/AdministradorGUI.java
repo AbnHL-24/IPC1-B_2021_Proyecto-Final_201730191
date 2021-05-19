@@ -46,8 +46,14 @@ public class AdministradorGUI extends javax.swing.JFrame {
         mnTarjetas = new javax.swing.JMenuItem();
         mnUsuarios = new javax.swing.JMenuItem();
         mnVuelos = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jmnOperacion = new javax.swing.JMenu();
         mnCargarArchivo = new javax.swing.JMenuItem();
+        jmnReportes = new javax.swing.JMenu();
+        mnReportePasajero = new javax.swing.JMenuItem();
+        mnReporteAerolinea = new javax.swing.JMenuItem();
+        mnReporteVuelo = new javax.swing.JMenuItem();
+        mnReporteAvion = new javax.swing.JMenuItem();
+        mnReporteAeropuerto = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,12 +102,31 @@ public class AdministradorGUI extends javax.swing.JFrame {
 
         jMenuBar1.add(jmnAdministracion);
 
-        jMenu2.setText("Operacion");
+        jmnOperacion.setText("Operacion");
 
         mnCargarArchivo.setText("Cargar desde archivo");
-        jMenu2.add(mnCargarArchivo);
+        jmnOperacion.add(mnCargarArchivo);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jmnOperacion);
+
+        jmnReportes.setText("Reportes");
+
+        mnReportePasajero.setText("Reporte por pasajero");
+        jmnReportes.add(mnReportePasajero);
+
+        mnReporteAerolinea.setText("Reporte por aerolinea");
+        jmnReportes.add(mnReporteAerolinea);
+
+        mnReporteVuelo.setText("Reporte por vuelo");
+        jmnReportes.add(mnReporteVuelo);
+
+        mnReporteAvion.setText("Reporte por avion");
+        jmnReportes.add(mnReporteAvion);
+
+        mnReporteAeropuerto.setText("Reporte por aeropuerto");
+        jmnReportes.add(mnReporteAeropuerto);
+
+        jMenuBar1.add(jmnReportes);
 
         setJMenuBar(jMenuBar1);
 
@@ -162,9 +187,10 @@ public class AdministradorGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jmnAdministracion;
+    private javax.swing.JMenu jmnOperacion;
+    private javax.swing.JMenu jmnReportes;
     private javax.swing.JMenuItem mnAerolineas;
     private javax.swing.JMenuItem mnAeropuertos;
     private javax.swing.JMenuItem mnAviones;
@@ -172,6 +198,11 @@ public class AdministradorGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnDistancias;
     private javax.swing.JMenuItem mnPasaportes;
     private javax.swing.JMenuItem mnRenovacionPasaportes;
+    private javax.swing.JMenuItem mnReporteAerolinea;
+    private javax.swing.JMenuItem mnReporteAeropuerto;
+    private javax.swing.JMenuItem mnReporteAvion;
+    private javax.swing.JMenuItem mnReportePasajero;
+    private javax.swing.JMenuItem mnReporteVuelo;
     private javax.swing.JMenuItem mnReservacion;
     private javax.swing.JMenuItem mnTarjetas;
     private javax.swing.JMenuItem mnUsuarios;
@@ -180,7 +211,7 @@ public class AdministradorGUI extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public JMenu getjMenu2() {
-        return jMenu2;
+        return jmnOperacion;
     }
 
     public JMenuBar getjMenuBar1() {
@@ -249,6 +280,34 @@ public class AdministradorGUI extends javax.swing.JFrame {
 
     public JMenuItem getMnCargarArchivo() {
         return mnCargarArchivo;
+    }
+
+    public JMenu getJmnOperacion() {
+        return jmnOperacion;
+    }
+
+    public JMenu getJmnReportes() {
+        return jmnReportes;
+    }
+
+    public JMenuItem getMnReporteAerolinea() {
+        return mnReporteAerolinea;
+    }
+
+    public JMenuItem getMnReporteAeropuerto() {
+        return mnReporteAeropuerto;
+    }
+
+    public JMenuItem getMnReporteAvion() {
+        return mnReporteAvion;
+    }
+
+    public JMenuItem getMnReportePasajero() {
+        return mnReportePasajero;
+    }
+
+    public JMenuItem getMnReporteVuelo() {
+        return mnReporteVuelo;
     }
 
     

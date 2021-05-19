@@ -61,7 +61,7 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
+        <Menu class="javax.swing.JMenu" name="jmnOperacion">
           <Properties>
             <Property name="text" type="java.lang.String" value="Operacion"/>
           </Properties>
@@ -69,6 +69,38 @@
             <MenuItem class="javax.swing.JMenuItem" name="mnCargarArchivo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cargar desde archivo"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jmnReportes">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Reportes"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="mnReportePasajero">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte por pasajero"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnReporteAerolinea">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte por aerolinea"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnReporteVuelo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte por vuelo"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnReporteAvion">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte por avion"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnReporteAeropuerto">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte por aeropuerto"/>
               </Properties>
             </MenuItem>
           </SubComponents>
