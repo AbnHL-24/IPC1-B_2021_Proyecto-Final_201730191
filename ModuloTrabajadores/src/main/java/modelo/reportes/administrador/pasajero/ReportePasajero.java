@@ -9,6 +9,8 @@ import modelo.base.Vuelo;
 import modelo.base.soporte.EstadoCivil;
 import modelo.base.soporte.Sexo;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,14 +18,15 @@ public class ReportePasajero {
     VueloDAOImpl vueloDAO = new VueloDAOImpl();
     ReservacionDAOImpl reservacionDAO = new ReservacionDAOImpl();
     PasaporteDAOImpl pasaporteDAO = new PasaporteDAOImpl();
-    ArrayList<Vuelo> vuelos = new ArrayList();
-    ArrayList<Reservacion> reservaciones = new ArrayList();
+    List<Vuelo> vuelos = vueloDAO.obtenerList();
+    List<Reservacion> reservaciones = reservacionDAO.obtenerList();
 
     public List obtenerPasajerosReporte() {
         ArrayList<PasajeroR> pasajeroReporte = new ArrayList();
         pasajeroReporte.add(reportePorEstadoCivil());
         pasajeroReporte.add(reportePorSexo());
-
+        pasajeroReporte.add(reportePorEdad());
+        pasajeroReporte.add(reportePorNacionalidad());
         return pasajeroReporte;
     }
 
@@ -35,11 +38,11 @@ public class ReportePasajero {
             for (Reservacion reservacion : reservaciones) {
                 if(vuelo.getCodigoVuelo().equals(reservacion.getCodigoVuelo())) {
                     Pasaporte pasaporte = pasaporteDAO.obtenerObjecto(reservacion.getNO_Pasaporte());
-                    if (modelo.base.soporte.EstadoCivil.SOLTERO.equals(pasaporte.getEstadoCivil())) {
+                    if (EstadoCivil.SOLTERO.equals(pasaporte.getEstadoCivil())) {
                         solteros.add(pasaporte);
-                    } else if (modelo.base.soporte.EstadoCivil.CASADO.equals(pasaporte.getEstadoCivil())) {
+                    } else if (EstadoCivil.CASADO.equals(pasaporte.getEstadoCivil())) {
                         casados.add(pasaporte);
-                    } else if (modelo.base.soporte.EstadoCivil.DIVORCIADO.equals(pasaporte.getEstadoCivil())) {
+                    } else if (EstadoCivil.DIVORCIADO.equals(pasaporte.getEstadoCivil())) {
                         divorciados.add(pasaporte);
                     }
                 }
@@ -93,5 +96,77 @@ public class ReportePasajero {
             PasajeroR els = new PasajeroR("Todos los sexos han viajado igual", String.valueOf(masculino.size()));
             return els;
         }
+    }
+
+    public PasajeroR reportePorEdad() {
+        ArrayList<Integer> edades = new ArrayList();
+
+        for (Vuelo vuelo : vuelos) {
+            for (Reservacion reservacion : reservaciones) {
+                if(vuelo.getCodigoVuelo().equals(reservacion.getCodigoVuelo())) {
+                    Pasaporte pasaporte = pasaporteDAO.obtenerObjecto(reservacion.getNO_Pasaporte());
+                    LocalDate now = LocalDate.now();
+                    Period edad = Period.between(pasaporte.getFechaDeNacimiento(), now);
+                    edades.add(edad.getYears());
+                }
+            }
+        }
+
+        edades.sort(null);
+
+        int edadMaxima = -1;
+        int cantMaxima = 0;
+        int edadActual = -1;
+        int cantActual = 0;
+
+        for (Integer e : edades) {
+            if (e == edadActual) {
+                cantActual++;
+            } else {
+                if (cantActual > cantMaxima) {
+                    edadMaxima = edadActual;
+                    cantMaxima = cantActual;
+                }
+                edadActual = e;
+                cantActual = 1;
+            }
+        }
+        PasajeroR rt = new PasajeroR(String.valueOf(edadMaxima) + " años", String.valueOf(cantMaxima));
+        return rt;
+    }
+
+    public PasajeroR reportePorNacionalidad() {
+        ArrayList<String> nacionalidades = new ArrayList();
+
+        for (Vuelo vuelo : vuelos) {
+            for (Reservacion reservacion : reservaciones) {
+                if(vuelo.getCodigoVuelo().equals(reservacion.getCodigoVuelo())) {
+                    Pasaporte pasaporte = pasaporteDAO.obtenerObjecto(reservacion.getNO_Pasaporte());
+                    nacionalidades.add(pasaporte.getNacionalidad());
+                }
+            }
+        }
+
+        nacionalidades.sort(null);
+
+        String nacionalidadMaxima = "1";
+        int cantMaxima = 0;
+        String nacionalidadActual = "";
+        int cantActual = 0;
+
+        for (String e : nacionalidades) {
+            if (e.equalsIgnoreCase(nacionalidadActual)) {
+                cantActual++;
+            } else {
+                if (cantActual > cantMaxima) {
+                    nacionalidadMaxima = nacionalidadActual;
+                    cantMaxima = cantActual;
+                }
+                nacionalidadActual = e;
+                cantActual = 1;
+            }
+        }
+        PasajeroR rt = new PasajeroR(nacionalidadMaxima,String.valueOf(cantMaxima));
+        return rt;
     }
 }
