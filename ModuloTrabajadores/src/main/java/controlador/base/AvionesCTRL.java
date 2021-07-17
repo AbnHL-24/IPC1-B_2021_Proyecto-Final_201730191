@@ -9,10 +9,12 @@ import vista.vistas.datos.avion.AvionGUI;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import static controlador.validaciones.ValidacionAvion.validarAvion;
 
-public class AvionesCTRL implements ActionListener {
+public class AvionesCTRL extends MouseAdapter implements ActionListener {
     private AvionGUI avionGUI;
     private AvionDAOImpl avionDAO = new AvionDAOImpl();
     private final String[] TITULOS = {"nombreAerolinea", "nombreAeropuertoActual", "codigoAvion",  "capacidadPAsajeros",
@@ -22,9 +24,10 @@ public class AvionesCTRL implements ActionListener {
     public AvionesCTRL(AvionGUI avionGUI) {
         this.avionGUI = avionGUI;
 
-        this.avionGUI.getBtnAgregar().addActionListener(this);
-        this.avionGUI.getBtnActualizar().addActionListener(this);
-        this.avionGUI.getBtnBorrar().addActionListener(this);
+        avionGUI.getBtnAgregar().addActionListener(this);
+        avionGUI.getBtnActualizar().addActionListener(this);
+        avionGUI.getBtnBorrar().addActionListener(this);
+        avionGUI.getTblDatosAviones().addMouseListener(this);
 
         this.generadorTabla = new GeneradorTabla(this.avionGUI.getTblDatosAviones(), TITULOS);
     }
@@ -61,7 +64,8 @@ public class AvionesCTRL implements ActionListener {
     }
 
     private void borrar() {
-        generadorTabla.generar(avionDAO.obtenerList());
+        String id = avionGUI.getTflCodigoAvion().getText();
+        avionDAO.borrar(id);
     }
 
     @Override
@@ -84,5 +88,22 @@ public class AvionesCTRL implements ActionListener {
         parametros[4] = avionGUI.getTflCapacidadGasolina().getText();;
         parametros[5] = avionGUI.getTflConsumoPorMilla().getText();
         return parametros;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        int fila = avionGUI.getTblDatosAviones().getSelectedRow();
+        String nombreAerolinea = avionGUI.getTblDatosAviones().getValueAt(fila, 0).toString();
+        avionGUI.getTflNombreAerolinea().setText(nombreAerolinea);
+        String nombreAeropuertoActual = avionGUI.getTblDatosAviones().getValueAt(fila, 1).toString();
+        avionGUI.getTflNombreAeropuertoActual().setText(nombreAeropuertoActual);
+        String codigoAvion = avionGUI.getTblDatosAviones().getValueAt(fila, 2).toString();
+        avionGUI.getTflCodigoAvion().setText(codigoAvion);
+        String capacidadDePasajeros = avionGUI.getTblDatosAviones().getValueAt(fila, 3).toString();
+        avionGUI.getTflCapacidadPasajeros().setText(capacidadDePasajeros);
+        String capacidadGasolina = avionGUI.getTblDatosAviones().getValueAt(fila, 4).toString();
+        avionGUI.getTflCapacidadGasolina().setText(capacidadGasolina);
+        String consumoMilla = avionGUI.getTblDatosAviones().getValueAt(fila, 5).toString();
+        avionGUI.getTflConsumoPorMilla().setText(consumoMilla);
     }
 }

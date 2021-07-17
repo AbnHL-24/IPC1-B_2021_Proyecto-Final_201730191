@@ -71,7 +71,8 @@ public class ReservacionCTRL implements ActionListener {
     }
 
     private void borrar() {
-        generadorTabla.generar(reservacionDAO.obtenerList());
+        String id = reservacionGUI.getTflCodigoVuelo().getText() + "-" + reservacionGUI.getTflNoAsiento().getText();
+        reservacionDAO.borrar(id);
     }
 
 

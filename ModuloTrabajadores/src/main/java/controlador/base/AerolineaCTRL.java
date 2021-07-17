@@ -47,8 +47,7 @@ public class AerolineaCTRL extends MouseAdapter implements ActionListener {
         String erroresAerolinea = validarAerolinea(parametros);
         if ("".equals(erroresAerolinea)) {
             Aerolinea aerolinea = new Aerolinea(parametros[0], parametros[1]);
-            AerolineaDAOImpl aerolineaDOA = new AerolineaDAOImpl();
-            aerolineaDOA.crear(aerolinea);
+            aerolineaDAO.crear(aerolinea);
             generadorTabla.generar(aerolineaDAO.obtenerList());
         }  else {
             JOptionPane.showMessageDialog(aerolineaGUI, erroresAerolinea, "Error en los datos ingresados",
@@ -68,7 +67,8 @@ public class AerolineaCTRL extends MouseAdapter implements ActionListener {
     }
 
     private void borrar() {
-        generadorTabla.generar(aerolineaDAO.obtenerList());
+        String id = aerolineaGUI.getTflNombreAerolinea().getText() + "-" + aerolineaGUI.getTflNombreAeropuerto().getText();
+        aerolineaDAO.borrar(id);
     }
 
 
@@ -86,10 +86,9 @@ public class AerolineaCTRL extends MouseAdapter implements ActionListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         int fila = aerolineaGUI.getTblDatosAerolineas().getSelectedRow();
-        String aeropuerto = aerolineaGUI.getTblDatosAerolineas().getValueAt(fila, 0).toString();
         String aerolinea = aerolineaGUI.getTblDatosAerolineas().getValueAt(fila, 1).toString();
-        Aerolinea a = aerolineaDAO.obtenerObjecto(aerolinea + "-" + aeropuerto);
-        aerolineaGUI.getTflNombreAerolinea().setText(a.getNombreAerolinea());
-        aerolineaGUI.getTflNombreAeropuerto().setText(a.getNombreAeropuerto());
+        aerolineaGUI.getTflNombreAerolinea().setText(aerolinea);
+        String aeropuerto = aerolineaGUI.getTblDatosAerolineas().getValueAt(fila, 0).toString();
+        aerolineaGUI.getTflNombreAeropuerto().setText(aeropuerto);
     }
 }

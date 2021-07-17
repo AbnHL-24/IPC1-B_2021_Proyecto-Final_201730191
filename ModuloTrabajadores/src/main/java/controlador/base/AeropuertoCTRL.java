@@ -12,10 +12,12 @@ import vista.vistas.datos.aeropuerto.AeropuertoGUI;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import static controlador.validaciones.ValidacionAeropuerto.validarAeropuerto;
 
-public class AeropuertoCTRL implements ActionListener {
+public class AeropuertoCTRL extends MouseAdapter implements ActionListener {
     private AeropuertoGUI aeropuertoGUI;
     private AeropuertoDAOImpl aeropuertoDAO = new AeropuertoDAOImpl();
     private final String[] TITULOS = {"nombreAeropuerto", "ciudad", "pais"};
@@ -27,6 +29,7 @@ public class AeropuertoCTRL implements ActionListener {
         this.aeropuertoGUI.getBtnAgregar().addActionListener(this);
         this.aeropuertoGUI.getBtnActualizar().addActionListener(this);
         this.aeropuertoGUI.getBtnBorrar().addActionListener(this);
+        aeropuertoGUI.getTblDatosAeropuertos().addMouseListener(this);
 
         this.generadorTabla = new GeneradorTabla(this.aeropuertoGUI.getTblDatosAeropuertos(), TITULOS);
     }
@@ -69,7 +72,8 @@ public class AeropuertoCTRL implements ActionListener {
     }
 
     private void borrar() {
-        generadorTabla.generar(aeropuertoDAO.obtenerList());
+        String id = aeropuertoGUI.getTflNombreAeropuerto().getText();
+        aeropuertoDAO.borrar(id);
     }
 
     @Override
@@ -81,5 +85,16 @@ public class AeropuertoCTRL implements ActionListener {
         } else if (e.getSource() == aeropuertoGUI.getBtnBorrar()) {
             borrar();
         }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        int fila = aeropuertoGUI.getTblDatosAeropuertos().getSelectedRow();
+        String nombreAeropuerto = aeropuertoGUI.getTblDatosAeropuertos().getValueAt(fila, 0).toString();
+        aeropuertoGUI.getTflNombreAeropuerto().setText(nombreAeropuerto);
+        String ciudad = aeropuertoGUI.getTblDatosAeropuertos().getValueAt(fila, 1).toString();
+        aeropuertoGUI.getTflCiudad().setText(ciudad);
+        String pais = aeropuertoGUI.getTblDatosAeropuertos().getValueAt(fila, 2).toString();
+        aeropuertoGUI.getTflPais().setText(pais);
     }
 }

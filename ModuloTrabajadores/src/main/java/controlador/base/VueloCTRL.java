@@ -74,7 +74,8 @@ public class VueloCTRL implements ActionListener {
     }
 
     private void borrar() {
-        generadorTabla.generar(vueloDAO.obtenerList());
+        String id = vueloGUI.getTflCodigoVuelo().getText();
+        vueloDAO.borrar(id);
     }
 
     private String[] obtenerParametrosVuelo() {

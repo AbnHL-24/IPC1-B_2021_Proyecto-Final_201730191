@@ -9,6 +9,7 @@ import vista.vistas.datos.avion.AvionGUI;
 
 import java.io.File;
 
+import static controlador.archivos.ManejarArchivo.borrarArchivo;
 import static controlador.archivos.ManejarArchivo.borrarDirectorio;
 
 /**
@@ -23,6 +24,7 @@ public class Main {
      */
     public static void main(String[] args) {
         borrarDirectorio(new File("/home/abnerhl/datos/"));
+        borrarArchivo("src/main/resources/resultadoCargaObjetos.txt");
         String path = "src/main/resources/cargaObjetos.txt";
         CargarDatosDesdeArchivo cargarDatosDesdeArchivo = new CargarDatosDesdeArchivo();
         cargarDatosDesdeArchivo.cargarDatos(path);

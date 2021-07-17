@@ -20,12 +20,8 @@ public class ValidacionAvion extends Validacion{
             validacion = anyadirError(validacion,"Aerolinea no existente en esta ciudad");
         }
 
-        if (isInt(parametros[2])) {
-            if (avionDAO.existe(parametros[2])) {
-                validacion = anyadirError(validacion,"El codigo del avion ya ha sido utilizado");
-            }
-        } else {
-            validacion = anyadirError(validacion,"El codigo del avion no tiene un formato correcto");
+        if (avionDAO.existe(parametros[2])) {
+            validacion = anyadirError(validacion,"El codigo del avion ya ha sido utilizado");
         }
 
         if (!isInt(parametros[3])) {

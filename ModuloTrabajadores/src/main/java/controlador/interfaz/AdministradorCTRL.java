@@ -14,6 +14,7 @@ import vista.vistas.datos.renovacionpasaporte.RenovacionPasaporteGUI;
 import vista.vistas.datos.reservacion.ReservacionGUI;
 import vista.vistas.datos.tarjeta.TarjetaGUI;
 import vista.vistas.datos.usuario.UsuarioGUI;
+import vista.vistas.datos.vuelo.VueloGUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -85,9 +86,9 @@ public class AdministradorCTRL implements ActionListener {
             TarjetaCTRL tarjetaCTRL = new TarjetaCTRL(tarjetaGUI);
             tarjetaCTRL.iniciar(administradorGUI.getPnlBase());
         } else if (e.getSource() == administradorGUI.getMnVuelos()) {
-            TarjetaGUI tarjetaGUI = new TarjetaGUI();
-            TarjetaCTRL tarjetaCTRL = new TarjetaCTRL(tarjetaGUI);
-            tarjetaCTRL.iniciar(administradorGUI.getPnlBase());
+            VueloGUI vueloGUI = new VueloGUI();
+            VueloCTRL vueloCTRL = new VueloCTRL(vueloGUI);
+            vueloCTRL.iniciar(administradorGUI.getPnlBase());
         } else if (e.getSource() == administradorGUI.getMnUsuarios()) {
             UsuarioGUI usuarioGUI = new UsuarioGUI();
             UsuarioCTRL usuarioCTRL = new UsuarioCTRL(usuarioGUI);

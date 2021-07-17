@@ -18,7 +18,7 @@ public class ReservacionDAOImpl implements ReservacionDAO{
     @Override
     public void crear(Reservacion reservacion) {
         crearDirectorio(PATH_RESERVACION);
-        String id = String.valueOf(reservacion.getCodigoVuelo() + " + " +reservacion.getNO_Asiento());
+        String id = String.valueOf(reservacion.getCodigoVuelo() + "-" +reservacion.getNO_Asiento());
         manejarArchivoBinario.crearArchivoBinario(PATH_RESERVACION + id + EXTENSION_RESERVACION, reservacion);
     }
 

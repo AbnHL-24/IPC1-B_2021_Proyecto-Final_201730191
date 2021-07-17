@@ -73,6 +73,7 @@ public class UsuarioCTRL implements ActionListener {
     }
 
     private void borrar() {
-        generadorTabla.generar(usuarioDAO.obtenerList());
+        String id =  usuarioGUI.getTflNombreUsuario().getText();
+        usuarioDAO.borrar(id);
     }
 }
