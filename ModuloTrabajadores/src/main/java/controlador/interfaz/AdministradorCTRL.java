@@ -1,8 +1,10 @@
 package controlador.interfaz;
 
 import controlador.base.*;
-import controlador.reportes.PasajeroRCTRL;
+import controlador.reportes.administrador.PasajeroRCTRL;
+import controlador.reportes.administrador.VueloRCTRL;
 import vista.informes.administrador.pasajero.PasajeroRGUI;
+import vista.informes.administrador.vuelo.VueloRGUI;
 import vista.ventanas.administrador.AdministradorGUI;
 import vista.vistas.cargainformacion.CargarInformacion;
 import vista.vistas.datos.aerolinea.AerolineaGUI;
@@ -101,7 +103,10 @@ public class AdministradorCTRL implements ActionListener {
             PasajeroRGUI pasajeroRGUI = new PasajeroRGUI();
             PasajeroRCTRL pasajeroRCTRL = new PasajeroRCTRL(pasajeroRGUI);
             pasajeroRCTRL.iniciar(administradorGUI.getPnlBase());
-
+        } else if (e.getSource() == administradorGUI.getMnReporteVuelo()) {
+            VueloRGUI vueloRGUI = new VueloRGUI();
+            VueloRCTRL vueloRCTRL = new VueloRCTRL(vueloRGUI);
+            vueloRCTRL.iniciar(administradorGUI.getPnlBase());
         }
     }
 }

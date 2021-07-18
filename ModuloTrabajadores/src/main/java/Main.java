@@ -1,11 +1,9 @@
 import controlador.archivos.CargarDatosDesdeArchivo;
-import controlador.interfaz.AdministradorCTRL;
 import controlador.interfaz.BienvenidaCTRL;
 import datos.usuario.UsuarioDAOImpl;
 import modelo.trabajadores.Administrador;
 import vista.inicio.BienvenidaGUI;
-import vista.ventanas.administrador.AdministradorGUI;
-import vista.vistas.datos.avion.AvionGUI;
+
 
 import java.io.File;
 

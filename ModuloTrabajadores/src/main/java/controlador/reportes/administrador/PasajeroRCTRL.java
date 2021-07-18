@@ -1,4 +1,4 @@
-package controlador.reportes;
+package controlador.reportes.administrador;
 
 import modelo.reportes.administrador.pasajero.PasajeroR;
 import modelo.reportes.administrador.pasajero.ReportePasajero;
