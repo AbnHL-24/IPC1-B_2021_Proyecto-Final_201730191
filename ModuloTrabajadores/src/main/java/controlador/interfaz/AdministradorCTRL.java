@@ -1,8 +1,10 @@
 package controlador.interfaz;
 
 import controlador.base.*;
+import controlador.reportes.administrador.AerolineaRCTRLRuta;
 import controlador.reportes.administrador.PasajeroRCTRL;
 import controlador.reportes.administrador.VueloRCTRL;
+import vista.informes.administrador.aerolinea.AerolineaRGUI;
 import vista.informes.administrador.pasajero.PasajeroRGUI;
 import vista.informes.administrador.vuelo.VueloRGUI;
 import vista.ventanas.administrador.AdministradorGUI;
@@ -40,10 +42,12 @@ public class AdministradorCTRL implements ActionListener {
         this.administradorGUI.getMnUsuarios().addActionListener(this);
         this.administradorGUI.getMnCargarArchivo().addActionListener(this);
         this.administradorGUI.getMnReportePasajero().addActionListener(this);
-        this.administradorGUI.getMnReporteAerolinea().addActionListener(this);
         this.administradorGUI.getMnReporteVuelo().addActionListener(this);
         this.administradorGUI.getMnReporteAvion().addActionListener(this);
         this.administradorGUI.getMnReporteAeropuerto().addActionListener(this);
+        this.administradorGUI.getMnRutaMasConcurrida().addActionListener(this);
+        this.administradorGUI.getMnAerolineaMasusada().addActionListener(this);
+        this.administradorGUI.getMnAerolineasPorAviones().addActionListener(this);
 
     }
 
@@ -107,6 +111,10 @@ public class AdministradorCTRL implements ActionListener {
             VueloRGUI vueloRGUI = new VueloRGUI();
             VueloRCTRL vueloRCTRL = new VueloRCTRL(vueloRGUI);
             vueloRCTRL.iniciar(administradorGUI.getPnlBase());
+        } else if (e.getSource() == administradorGUI.getMnRutaMasConcurrida()) {
+            AerolineaRGUI aerolineaRGUI = new AerolineaRGUI();
+            AerolineaRCTRLRuta aerolineaRCTRLRuta = new AerolineaRCTRLRuta(aerolineaRGUI);
+            aerolineaRCTRLRuta.iniciar(administradorGUI.getPnlBase());
         }
     }
 }

@@ -1,1 +1,3 @@
 vista/informes/administrador/vuelo/VueloRGUI$1.class
+vista/informes/administrador/aerolinea/AerolineaRGUI.class
+controlador/reportes/administrador/AerolineaRCTRL.class

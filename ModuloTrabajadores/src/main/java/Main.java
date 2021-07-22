@@ -21,11 +21,16 @@ public class Main {
      * @param args arreglo de argumentos de la consola.
      */
     public static void main(String[] args) {
+
         borrarDirectorio(new File("/home/abnerhl/datos/"));
         borrarArchivo("src/main/resources/resultadoCargaObjetos.txt");
+
+
         String path = "src/main/resources/cargaObjetos.txt";
         CargarDatosDesdeArchivo cargarDatosDesdeArchivo = new CargarDatosDesdeArchivo();
         cargarDatosDesdeArchivo.cargarDatos(path);
+
+
         /* pruebas
         for (int i = 0; i < cargarDatosDesdeArchivo.obtenerResultados().size(); i++) {
             System.out.println(cargarDatosDesdeArchivo.obtenerResultados().get(i));
@@ -39,6 +44,7 @@ public class Main {
         Administrador admin = new Administrador("admin", "admin");
         UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();
         usuarioDAO.crear(admin);
+
         BienvenidaGUI bienvenidaGUI = new BienvenidaGUI();
         BienvenidaCTRL bienvenidaCTRL = new BienvenidaCTRL(bienvenidaGUI);
         bienvenidaCTRL.iniciar();

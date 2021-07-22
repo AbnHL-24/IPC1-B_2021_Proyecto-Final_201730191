@@ -1,11 +1,7 @@
 package controlador.interfaz;
 
 import controlador.archivos.CargarDatosDesdeArchivo;
-import datos.usuario.UsuarioDAOImpl;
-import modelo.tablas.GeneradorTabla;
-import modelo.trabajadores.Usuario;
 import vista.vistas.cargainformacion.CargarInformacion;
-import vista.vistas.datos.usuario.UsuarioGUI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -28,6 +24,7 @@ public class CargarArchivoCTRL implements ActionListener {
         parent.add(cargarinformacion);
         parent.validate();
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == cargarinformacion.getBtnAceptar()) {

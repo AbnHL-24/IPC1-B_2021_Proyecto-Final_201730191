@@ -78,14 +78,31 @@
             <Property name="text" type="java.lang.String" value="Reportes"/>
           </Properties>
           <SubComponents>
+            <Menu class="javax.swing.JMenu" name="jMenu1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte por aerolinea"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="mnRutaMasConcurrida">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ruta mas concurrida"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="mnAerolineaMasusada">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Aerolinea mas usada"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="mnAerolineasPorAviones">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Aerolineas por aviones"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="mnReportePasajero">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reporte por pasajero"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mnReporteAerolinea">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Reporte por aerolinea"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnReporteVuelo">
