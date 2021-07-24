@@ -2,6 +2,7 @@ import controlador.archivos.CargarDatosDesdeArchivo;
 import controlador.interfaz.BienvenidaCTRL;
 import datos.usuario.UsuarioDAOImpl;
 import modelo.trabajadores.Administrador;
+import vista.informes.administrador.aerolinea.AerolineaMasUsadaRGUI;
 import vista.inicio.BienvenidaGUI;
 
 
@@ -30,6 +31,9 @@ public class Main {
         CargarDatosDesdeArchivo cargarDatosDesdeArchivo = new CargarDatosDesdeArchivo();
         cargarDatosDesdeArchivo.cargarDatos(path);
 
+        AerolineaMasUsadaRGUI aerolineaMasUsadaRGUI = new AerolineaMasUsadaRGUI();
+        String feha = aerolineaMasUsadaRGUI.getDtcFechaInicio().getDate().toString();
+        System.out.println(feha);
 
         /* pruebas
         for (int i = 0; i < cargarDatosDesdeArchivo.obtenerResultados().size(); i++) {

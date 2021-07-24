@@ -1,6 +1,5 @@
 package modelo.reportes.administrador.aerolinea;
 
-import datos.aeropuerto.AeropuertoDAOImpl;
 import datos.avion.AvionDAOImpl;
 import datos.distancia.DistanciaDAOImpl;
 import datos.pasaporte.PasaporteDAOImpl;

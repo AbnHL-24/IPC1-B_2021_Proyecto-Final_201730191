@@ -30,6 +30,7 @@ public class AerolineaRCTRLRuta {
         aerolineaRGUI.setVisible(true);
         parent.add(aerolineaRGUI);
         parent.validate();
+
         aerolineaRGUI.getLblRutaMasConcurrida().setText(reporteAerolinea.obtenerRuta());
         String canPasajers = String.valueOf(reporteAerolinea.obtenerCantidadPasajerosRuta());
         aerolineaRGUI.getLblCantidadPasajeros().setText(canPasajers);
