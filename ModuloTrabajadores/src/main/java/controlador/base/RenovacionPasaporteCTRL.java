@@ -71,7 +71,8 @@ public class RenovacionPasaporteCTRL implements ActionListener {
     }
 
     private void borrar() {
-        generadorTabla.generar(renovacionPasaporteDAO.obtenerList());
+        String id = renovacionPasaporteGUI.getTflNoPasaporte().getText();
+        renovacionPasaporteDAO.borrar(id);
     }
 
     private String[] obtenerParametrosRenovacionPasaporte() {

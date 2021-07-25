@@ -5,6 +5,10 @@
  */
 package vista.vistas.datos.usuario;
 
+import datos.aerolinea.AerolineaDAOImpl;
+import datos.aeropuerto.AeropuertoDAOImpl;
+import java.awt.event.ItemEvent;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -12,12 +16,15 @@ import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import modelo.base.Aerolinea;
+import modelo.base.Aeropuerto;
 
 /**
  *
  * @author abnerhl
  */
 public class UsuarioGUI extends javax.swing.JPanel {
+
 
     /**
      * Creates new form UsuarioGUI
@@ -48,7 +55,7 @@ public class UsuarioGUI extends javax.swing.JPanel {
         tblDatos = new javax.swing.JTable();
         cmbTIpoUsuario = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        tflAsociacion = new javax.swing.JTextField();
+        cmbAeroX = new javax.swing.JComboBox<>();
 
         lblNombreUsuario.setText("Nombre usuario:");
 
@@ -80,70 +87,83 @@ public class UsuarioGUI extends javax.swing.JPanel {
         tblDatosUsuarios.setViewportView(tblDatos);
 
         cmbTIpoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Gerente", "Operador" }));
+        cmbTIpoUsuario.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbTIpoUsuarioItemStateChanged(evt);
+            }
+        });
 
-        jLabel1.setText("Aerolinea/Aeropuerto");
+        jLabel1.setText("Aerolinea/Aeropuerto (si aplica):");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(btnAgregar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnActualizar)
-                .addGap(27, 27, 27)
-                .addComponent(btnBorrar)
-                .addGap(28, 28, 28)
-                .addComponent(btnLimpiar)
-                .addGap(49, 49, 49))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(tblDatosUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(116, 116, 116)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addComponent(lblTipoUsuario, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblContrasenya, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblNombreUsuario, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.LEADING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblContrasenya)
-                    .addComponent(lblNombreUsuario)
-                    .addComponent(lblTipoUsuario)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tflNombreUsuario)
-                    .addComponent(pflContrasenya, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                    .addComponent(cmbTIpoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tflAsociacion))
-                .addGap(57, 57, 57))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(tflNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(80, 80, 80))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnLimpiar)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(pflContrasenya, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(cmbAeroX, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(cmbTIpoUsuario, javax.swing.GroupLayout.Alignment.LEADING, 0, 174, Short.MAX_VALUE))))
+                                .addContainerGap())))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnActualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBorrar)
+                        .addGap(248, 248, 248))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(tblDatosUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNombreUsuario)
-                    .addComponent(tflNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblContrasenya)
-                    .addComponent(pflContrasenya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTipoUsuario)
-                    .addComponent(cmbTIpoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(tflAsociacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNombreUsuario)
+                            .addComponent(tflNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblContrasenya)
+                            .addComponent(pflContrasenya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTipoUsuario)
+                            .addComponent(cmbTIpoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1))
+                    .addComponent(cmbAeroX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
                     .addComponent(btnLimpiar)
                     .addComponent(btnBorrar)
                     .addComponent(btnActualizar))
-                .addGap(18, 18, 18)
-                .addComponent(tblDatosUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(tblDatosUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -151,12 +171,33 @@ public class UsuarioGUI extends javax.swing.JPanel {
         limpiarCampos();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+    private void cmbTIpoUsuarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbTIpoUsuarioItemStateChanged
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            if ("Administrador".equals(this.cmbTIpoUsuario.getSelectedItem())) {
+                this.cmbAeroX.removeAllItems();
+            } else if ("Gerente".equals(this.cmbTIpoUsuario.getSelectedItem())) {
+                this.getCmbAeroX().removeAllItems();
+                List<Aerolinea> aerolineas = aerolineaDAO.obtenerList();
+                for (Aerolinea a : aerolineas) {
+                    this.getCmbAeroX().addItem(a.getNombreAerolinea());
+                }
+            } else if ("Operador".equals(this.cmbTIpoUsuario.getSelectedItem())) {
+                this.getCmbAeroX().removeAllItems();
+                List<Aeropuerto> aeropuertos = aeropuertoDAO.obtenerList();
+                for (Aeropuerto a : aeropuertos) {
+                    this.getCmbAeroX().addItem(a.getNombreAeropuerto());
+                }
+            }
+        }
+    }//GEN-LAST:event_cmbTIpoUsuarioItemStateChanged
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JComboBox<String> cmbAeroX;
     private javax.swing.JComboBox<String> cmbTIpoUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblContrasenya;
@@ -165,8 +206,9 @@ public class UsuarioGUI extends javax.swing.JPanel {
     private javax.swing.JPasswordField pflContrasenya;
     private javax.swing.JTable tblDatos;
     private javax.swing.JScrollPane tblDatosUsuarios;
-    private javax.swing.JTextField tflAsociacion;
     private javax.swing.JTextField tflNombreUsuario;
+    private AerolineaDAOImpl aerolineaDAO = new AerolineaDAOImpl();
+    private AeropuertoDAOImpl aeropuertoDAO = new AeropuertoDAOImpl();
     // End of variables declaration//GEN-END:variables
 
     public JButton getBtnActualizar() {
@@ -230,8 +272,8 @@ public class UsuarioGUI extends javax.swing.JPanel {
         return tblDatos;
     }
 
-    public JTextField getTflAsociacion() {
-        return tflAsociacion;
+    public JComboBox<String> getCmbAeroX() {
+        return cmbAeroX;
     }
     
        

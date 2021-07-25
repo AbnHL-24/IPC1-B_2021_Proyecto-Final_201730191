@@ -1,6 +1,12 @@
 package controlador.interfaz;
 
 import controlador.base.*;
+import controlador.reportes.administrador.AerolineaRCTRLRuta;
+import controlador.reportes.administrador.PasajeroRCTRL;
+import controlador.reportes.administrador.VueloRCTRL;
+import vista.informes.administrador.aerolinea.AerolineaRGUI;
+import vista.informes.administrador.pasajero.PasajeroRGUI;
+import vista.informes.administrador.vuelo.VueloRGUI;
 import vista.ventanas.administrador.AdministradorGUI;
 import vista.vistas.cargainformacion.CargarInformacion;
 import vista.vistas.datos.aerolinea.AerolineaGUI;
@@ -12,6 +18,7 @@ import vista.vistas.datos.renovacionpasaporte.RenovacionPasaporteGUI;
 import vista.vistas.datos.reservacion.ReservacionGUI;
 import vista.vistas.datos.tarjeta.TarjetaGUI;
 import vista.vistas.datos.usuario.UsuarioGUI;
+import vista.vistas.datos.vuelo.VueloGUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,6 +41,13 @@ public class AdministradorCTRL implements ActionListener {
         this.administradorGUI.getMnVuelos().addActionListener(this);
         this.administradorGUI.getMnUsuarios().addActionListener(this);
         this.administradorGUI.getMnCargarArchivo().addActionListener(this);
+        this.administradorGUI.getMnReportePasajero().addActionListener(this);
+        this.administradorGUI.getMnReporteVuelo().addActionListener(this);
+        this.administradorGUI.getMnReporteAvion().addActionListener(this);
+        this.administradorGUI.getMnReporteAeropuerto().addActionListener(this);
+        this.administradorGUI.getMnRutaMasConcurrida().addActionListener(this);
+        this.administradorGUI.getMnAerolineaMasusada().addActionListener(this);
+        this.administradorGUI.getMnAerolineasPorAviones().addActionListener(this);
 
     }
 
@@ -78,9 +92,9 @@ public class AdministradorCTRL implements ActionListener {
             TarjetaCTRL tarjetaCTRL = new TarjetaCTRL(tarjetaGUI);
             tarjetaCTRL.iniciar(administradorGUI.getPnlBase());
         } else if (e.getSource() == administradorGUI.getMnVuelos()) {
-            TarjetaGUI tarjetaGUI = new TarjetaGUI();
-            TarjetaCTRL tarjetaCTRL = new TarjetaCTRL(tarjetaGUI);
-            tarjetaCTRL.iniciar(administradorGUI.getPnlBase());
+            VueloGUI vueloGUI = new VueloGUI();
+            VueloCTRL vueloCTRL = new VueloCTRL(vueloGUI);
+            vueloCTRL.iniciar(administradorGUI.getPnlBase());
         } else if (e.getSource() == administradorGUI.getMnUsuarios()) {
             UsuarioGUI usuarioGUI = new UsuarioGUI();
             UsuarioCTRL usuarioCTRL = new UsuarioCTRL(usuarioGUI);
@@ -89,6 +103,18 @@ public class AdministradorCTRL implements ActionListener {
             CargarInformacion cargarInformacion = new CargarInformacion();
             CargarArchivoCTRL cargarArchivoCTRL = new CargarArchivoCTRL(cargarInformacion);
             cargarArchivoCTRL.iniciar(administradorGUI.getPnlBase());
+        } else if (e.getSource() == administradorGUI.getMnReportePasajero()) {
+            PasajeroRGUI pasajeroRGUI = new PasajeroRGUI();
+            PasajeroRCTRL pasajeroRCTRL = new PasajeroRCTRL(pasajeroRGUI);
+            pasajeroRCTRL.iniciar(administradorGUI.getPnlBase());
+        } else if (e.getSource() == administradorGUI.getMnReporteVuelo()) {
+            VueloRGUI vueloRGUI = new VueloRGUI();
+            VueloRCTRL vueloRCTRL = new VueloRCTRL(vueloRGUI);
+            vueloRCTRL.iniciar(administradorGUI.getPnlBase());
+        } else if (e.getSource() == administradorGUI.getMnRutaMasConcurrida()) {
+            AerolineaRGUI aerolineaRGUI = new AerolineaRGUI();
+            AerolineaRCTRLRuta aerolineaRCTRLRuta = new AerolineaRCTRLRuta(aerolineaRGUI);
+            aerolineaRCTRLRuta.iniciar(administradorGUI.getPnlBase());
         }
     }
 }

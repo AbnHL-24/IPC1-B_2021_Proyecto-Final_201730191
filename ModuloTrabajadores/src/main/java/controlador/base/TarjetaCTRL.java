@@ -71,7 +71,8 @@ public class TarjetaCTRL implements ActionListener {
     }
 
     private void borrar() {
-        generadorTabla.generar(tarjetaDAO.obtenerList());
+        String id = tarjetaGUI.getTflNoTarjeta().getText();
+        tarjetaDAO.borrar(id);
     }
 
     private String[] obtenerParametrosTarjeta() {

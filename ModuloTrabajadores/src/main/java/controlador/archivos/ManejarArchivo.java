@@ -1,9 +1,6 @@
 package controlador.archivos;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,11 +31,44 @@ public class ManejarArchivo {
         return datos;
     }
 
+    /**
+     * Guarda una linea de texro en un archivo.
+     * @param path direcicon con nombre del archivo a crear.
+     * @param texto cadena que se va a guardar.
+     */
     public static void guardarArchivo(String path, String texto) {
-        try ( PrintWriter escribir = new PrintWriter(path)) {
+        try ( PrintWriter escribir = new PrintWriter(path) ) {
             escribir.print(texto);
         } catch (IOException ex) {
             System.out.println("No se encontró el archivo");
+        }
+    }
+
+    /**
+     *
+     * @param path
+     * @param texto
+     */
+    public static void agregarAUnArchivoTXT(String path, String texto) {
+        try {
+            FileWriter archivo = new FileWriter(path, true);
+            try(BufferedWriter almacen = new BufferedWriter(archivo)) {
+                almacen.write(texto + "\n");
+                almacen.close();
+            }
+            archivo.close();
+        } catch (Exception ex) {
+            System.out.println("Errores al escribir el archivo");
+        }
+    }
+
+    public static void guardarArrayListStringEnTXT(String path, ArrayList<String> textos) {
+        for (String texto : textos) {
+            try ( PrintWriter escribir = new PrintWriter(path) ) {
+                escribir.print(texto + "\n");
+            } catch (IOException ex) {
+                System.out.println("No se encontró el archivo");
+            }
         }
     }
 

@@ -28,6 +28,7 @@ public class BienvenidaCTRL implements ActionListener {
         String pass = new String(contra);
         if (e.getSource() == bienvenidaGUI.getBtnIniciarSesion()) {
             if ("admin".equals(bienvenidaGUI.getTflNombreUsuario().getText()) & "admin".equals(pass)) {
+                bienvenidaGUI.setVisible(false);
                 AdministradorGUI administradorGUI = new AdministradorGUI();
                 AdministradorCTRL administradorCTRL = new AdministradorCTRL(administradorGUI);
                 administradorCTRL.iniciar();

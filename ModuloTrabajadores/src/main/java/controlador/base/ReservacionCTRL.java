@@ -55,7 +55,7 @@ public class ReservacionCTRL implements ActionListener {
         String[] parametros = obtenerParametrosReservacion();
         String erroresReservacion= validarReservacion(parametros);
         if ("".equals(erroresReservacion)) {
-            Reservacion reservacion = new Reservacion(Long.parseLong(parametros[0]), parametros[1],
+            Reservacion reservacion = new Reservacion(parametros[0], parametros[1],
                     Long.parseLong(parametros[2]), Integer.parseInt(parametros[3]));
             ReservacionDAOImpl reservacionDAO= new ReservacionDAOImpl();
             reservacionDAO.crear(reservacion);
@@ -71,7 +71,8 @@ public class ReservacionCTRL implements ActionListener {
     }
 
     private void borrar() {
-        generadorTabla.generar(reservacionDAO.obtenerList());
+        String id = reservacionGUI.getTflCodigoVuelo().getText() + "-" + reservacionGUI.getTflNoAsiento().getText();
+        reservacionDAO.borrar(id);
     }
 
 

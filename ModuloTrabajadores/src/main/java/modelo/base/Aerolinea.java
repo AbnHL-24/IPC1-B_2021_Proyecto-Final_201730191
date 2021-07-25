@@ -1,5 +1,6 @@
 package modelo.base;
 
+import lombok.*;
 import modelo.tablas.Arrayable;
 
 import java.io.Serializable;
@@ -10,6 +11,10 @@ import java.io.Serializable;
  * @see Vuelo
  * @author abnerhl
  */
+@Getter
+@Setter
+@NoArgsConstructor
+//@Builder
 public class Aerolinea implements Serializable, Arrayable {
     private String nombreAeropuerto;
     private String nombreAerolinea;
@@ -24,46 +29,6 @@ public class Aerolinea implements Serializable, Arrayable {
         this.nombreAeropuerto = nombreAeropuerto;
         this.nombreAerolinea = nombreAerolinea;
         this.identificadorAerolinea = nombreAerolinea + "-" + nombreAeropuerto;
-    }
-
-    /**
-     * Captador del nombre del aeropuerto.
-     * @return retorna el nombre del aeropuerto.
-     */
-    public String getNombreAeropuerto() {
-        return nombreAeropuerto;
-    }
-
-    /**
-     * Definidor del nombre del aeropuerto.
-     * @param nombreAeropuerto nombre a  definir del aeropuerto.
-     */
-    public void setNombreAeropuerto(String nombreAeropuerto) {
-        this.nombreAeropuerto = nombreAeropuerto;
-    }
-
-    /**
-     * Captador del nombre de la aerolinea.
-     * @return retorna el nombre de la aerolinea.
-     */
-    public String getNombreAerolinea() {
-        return nombreAerolinea;
-    }
-
-    /**
-     * Definidor del nombre de la aerolinea.
-     * @param nombreAerolinea nombre a definir de la aerolinea.
-     */
-    public void setNombreAerolinea(String nombreAerolinea) {
-        this.nombreAerolinea = nombreAerolinea;
-    }
-
-    public String getIdentificadorAerolinea() {
-        return identificadorAerolinea;
-    }
-
-    public void setIdentificadorAerolinea(String identificadorAerolinea) {
-        this.identificadorAerolinea = identificadorAerolinea;
     }
 
     @Override

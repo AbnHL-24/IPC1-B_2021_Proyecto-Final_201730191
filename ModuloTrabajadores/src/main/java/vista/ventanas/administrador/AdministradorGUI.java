@@ -46,20 +46,31 @@ public class AdministradorGUI extends javax.swing.JFrame {
         mnTarjetas = new javax.swing.JMenuItem();
         mnUsuarios = new javax.swing.JMenuItem();
         mnVuelos = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jmnOperacion = new javax.swing.JMenu();
         mnCargarArchivo = new javax.swing.JMenuItem();
+        jmnReportes = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        mnRutaMasConcurrida = new javax.swing.JMenuItem();
+        mnAerolineaMasusada = new javax.swing.JMenuItem();
+        mnAerolineasPorAviones = new javax.swing.JMenuItem();
+        mnReportePasajero = new javax.swing.JMenuItem();
+        mnReporteVuelo = new javax.swing.JMenuItem();
+        mnReporteAvion = new javax.swing.JMenuItem();
+        mnReporteAeropuerto = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        pnlBase.setPreferredSize(new java.awt.Dimension(800, 600));
 
         javax.swing.GroupLayout pnlBaseLayout = new javax.swing.GroupLayout(pnlBase);
         pnlBase.setLayout(pnlBaseLayout);
         pnlBaseLayout.setHorizontalGroup(
             pnlBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 916, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         pnlBaseLayout.setVerticalGroup(
             pnlBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 737, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
         jmnAdministracion.setText("Administracion");
@@ -96,12 +107,41 @@ public class AdministradorGUI extends javax.swing.JFrame {
 
         jMenuBar1.add(jmnAdministracion);
 
-        jMenu2.setText("Operacion");
+        jmnOperacion.setText("Operacion");
 
         mnCargarArchivo.setText("Cargar desde archivo");
-        jMenu2.add(mnCargarArchivo);
+        jmnOperacion.add(mnCargarArchivo);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jmnOperacion);
+
+        jmnReportes.setText("Reportes");
+
+        jMenu1.setText("Reporte por aerolinea");
+
+        mnRutaMasConcurrida.setText("Ruta mas concurrida");
+        jMenu1.add(mnRutaMasConcurrida);
+
+        mnAerolineaMasusada.setText("Aerolinea mas usada");
+        jMenu1.add(mnAerolineaMasusada);
+
+        mnAerolineasPorAviones.setText("Aerolineas por aviones");
+        jMenu1.add(mnAerolineasPorAviones);
+
+        jmnReportes.add(jMenu1);
+
+        mnReportePasajero.setText("Reporte por pasajero");
+        jmnReportes.add(mnReportePasajero);
+
+        mnReporteVuelo.setText("Reporte por vuelo");
+        jmnReportes.add(mnReporteVuelo);
+
+        mnReporteAvion.setText("Reporte por avion");
+        jmnReportes.add(mnReporteAvion);
+
+        mnReporteAeropuerto.setText("Reporte por aeropuerto");
+        jmnReportes.add(mnReporteAeropuerto);
+
+        jMenuBar1.add(jmnReportes);
 
         setJMenuBar(jMenuBar1);
 
@@ -109,15 +149,11 @@ public class AdministradorGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(pnlBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(pnlBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -162,17 +198,26 @@ public class AdministradorGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jmnAdministracion;
+    private javax.swing.JMenu jmnOperacion;
+    private javax.swing.JMenu jmnReportes;
+    private javax.swing.JMenuItem mnAerolineaMasusada;
     private javax.swing.JMenuItem mnAerolineas;
+    private javax.swing.JMenuItem mnAerolineasPorAviones;
     private javax.swing.JMenuItem mnAeropuertos;
     private javax.swing.JMenuItem mnAviones;
     private javax.swing.JMenuItem mnCargarArchivo;
     private javax.swing.JMenuItem mnDistancias;
     private javax.swing.JMenuItem mnPasaportes;
     private javax.swing.JMenuItem mnRenovacionPasaportes;
+    private javax.swing.JMenuItem mnReporteAeropuerto;
+    private javax.swing.JMenuItem mnReporteAvion;
+    private javax.swing.JMenuItem mnReportePasajero;
+    private javax.swing.JMenuItem mnReporteVuelo;
     private javax.swing.JMenuItem mnReservacion;
+    private javax.swing.JMenuItem mnRutaMasConcurrida;
     private javax.swing.JMenuItem mnTarjetas;
     private javax.swing.JMenuItem mnUsuarios;
     private javax.swing.JMenuItem mnVuelos;
@@ -180,7 +225,7 @@ public class AdministradorGUI extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public JMenu getjMenu2() {
-        return jMenu2;
+        return jmnOperacion;
     }
 
     public JMenuBar getjMenuBar1() {
@@ -251,6 +296,46 @@ public class AdministradorGUI extends javax.swing.JFrame {
         return mnCargarArchivo;
     }
 
-    
+    public JMenu getJmnOperacion() {
+        return jmnOperacion;
+    }
+
+    public JMenu getJmnReportes() {
+        return jmnReportes;
+    }
+
+    public JMenuItem getMnReporteAeropuerto() {
+        return mnReporteAeropuerto;
+    }
+
+    public JMenuItem getMnReporteAvion() {
+        return mnReporteAvion;
+    }
+
+    public JMenuItem getMnReportePasajero() {
+        return mnReportePasajero;
+    }
+
+    public JMenuItem getMnReporteVuelo() {
+        return mnReporteVuelo;
+    }
+
+    public JMenu getjMenu1() {
+        return jMenu1;
+    }
+
+    public JMenuItem getMnAerolineaMasusada() {
+        return mnAerolineaMasusada;
+    }
+
+    public JMenuItem getMnAerolineasPorAviones() {
+        return mnAerolineasPorAviones;
+    }
+
+    public JMenuItem getMnRutaMasConcurrida() {
+        return mnRutaMasConcurrida;
+    }
+
+     
     
 }

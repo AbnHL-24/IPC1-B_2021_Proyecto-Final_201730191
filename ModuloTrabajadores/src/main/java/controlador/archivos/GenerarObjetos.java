@@ -39,9 +39,9 @@ public class GenerarObjetos {
 
     public void generarReservacion(String[] parametros, int indice) {
         if (parametros.length ==  4) {
-            String erroresReservacion= validarReservacion(parametros);
+            String erroresReservacion = validarReservacion(parametros);
             if ("".equals(erroresReservacion)) {
-                Reservacion reservacion = new Reservacion(Long.parseLong(parametros[0]), parametros[1],
+                Reservacion reservacion = new Reservacion(parametros[0], parametros[1],
                         Long.parseLong(parametros[2]), Integer.parseInt(parametros[3]));
                 ReservacionDAOImpl reservacionDAO= new ReservacionDAOImpl();
                 reservacionDAO.crear(reservacion);
@@ -214,4 +214,6 @@ public class GenerarObjetos {
     public ArrayList<String> getResutadosDeCargaDeDatos() {
         return resutadosDeCargaDeDatos;
     }
+
+
 }

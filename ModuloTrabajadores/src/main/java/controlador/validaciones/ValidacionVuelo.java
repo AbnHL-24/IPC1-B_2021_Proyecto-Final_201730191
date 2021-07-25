@@ -13,20 +13,12 @@ public class ValidacionVuelo extends Validacion {
         AvionDAOImpl avionDAO = new AvionDAOImpl();
         VueloDAOImpl vueloDAO = new VueloDAOImpl();
 
-        if (isInt(parametros[0])) {
-            if (vueloDAO.existe(parametros[0])) {
-                validacion = anyadirError(validacion,"El codigo del vuelo ya ha sido utilizado");
-            }
-        } else {
-            validacion = anyadirError(validacion,"El codigo del avion tiene un formato incorrecto");
+        if (vueloDAO.existe(parametros[0])) {
+            validacion = anyadirError(validacion,"El codigo del vuelo ya ha sido utilizado");
         }
 
-        if (isInt(parametros[1])) {
-            if (!avionDAO.existe(parametros[1])) {
-                validacion = anyadirError(validacion,"El codigo del avion no existe");
-            }
-        } else {
-            validacion = anyadirError(validacion,"El codigo del avion tiene un formato incorrecto");
+        if (!avionDAO.existe(parametros[1])) {
+            validacion = anyadirError(validacion,"El codigo del avion no existe");
         }
 
         if (!aeropuertoDAO.existe(parametros[2])) {

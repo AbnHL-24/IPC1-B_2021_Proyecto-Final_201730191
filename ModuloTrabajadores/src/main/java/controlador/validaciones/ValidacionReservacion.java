@@ -21,12 +21,8 @@ public class ValidacionReservacion extends Validacion {
             validacion = anyadirError(validacion,"El numero del pasaporte no es un numero largo");
         }
 
-        if (isInt(parametros[1])) {
-            if (!vueloDAO.existe(parametros[1])) {
-                validacion = anyadirError(validacion,"El codigo del vuelo no existe");
-            }
-        } else {
-            validacion = anyadirError(validacion,"El codigo del avion no es un entero");
+        if (!vueloDAO.existe(parametros[1])) {
+            validacion = anyadirError(validacion,"El codigo del vuelo no existe");
         }
 
         if (isLong(parametros[2])) {

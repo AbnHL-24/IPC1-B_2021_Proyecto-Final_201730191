@@ -79,7 +79,8 @@ public class PasaporteCTRL implements ActionListener {
     }
 
     private void borrar() {
-        generadorTabla.generar(pasaporteDAO.obtenerList());
+        String id = pasaporteGUI.getTflNoPasaporte().getText();
+        pasaporteDAO.borrar(id);
     }
 
 

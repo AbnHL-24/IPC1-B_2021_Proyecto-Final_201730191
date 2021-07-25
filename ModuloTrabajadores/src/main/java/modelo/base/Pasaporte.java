@@ -8,6 +8,8 @@ import modelo.tablas.Arrayable;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.Year;
 
 /**
  * Crea un pasaporte para un cliente.

@@ -39,6 +39,7 @@ public class UsuarioCTRL implements ActionListener {
         }
     }
 
+
     public void iniciar(JPanel parent) {
         parent.removeAll();
         parent.repaint();
@@ -59,11 +60,11 @@ public class UsuarioCTRL implements ActionListener {
             usuarioDAO.crear(administrador);
         } else if ("Gerente".equals(usuarioGUI.getCmbTIpoUsuario().getSelectedItem())) {
             Gerente gerente = new Gerente(usuarioGUI.getTflNombreUsuario().getText(),pass,
-                    usuarioGUI.getTflAsociacion().getText());
+                    usuarioGUI.getCmbAeroX().getSelectedItem().toString());
             usuarioDAO.crear(gerente);
         } else if ("Operador".equals(usuarioGUI.getCmbTIpoUsuario().getSelectedItem())) {
             Operador operador = new Operador(usuarioGUI.getTflNombreUsuario().getText(),pass,
-                    usuarioGUI.getTflAsociacion().getText());
+                    usuarioGUI.getCmbAeroX().getSelectedItem().toString());
             usuarioDAO.crear(operador);
         }
     }
@@ -73,6 +74,7 @@ public class UsuarioCTRL implements ActionListener {
     }
 
     private void borrar() {
-        generadorTabla.generar(usuarioDAO.obtenerList());
+        String id =  usuarioGUI.getTflNombreUsuario().getText();
+        usuarioDAO.borrar(id);
     }
 }
